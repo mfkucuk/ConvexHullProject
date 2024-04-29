@@ -1,5 +1,6 @@
 import { ConvexHull } from "../ConvexHull.js";
 import { mergeSort } from "../lib/mergeSort.js";
+import { orientation } from "../lib/orientation.js";
 
 export class GrahamScan {
 
@@ -39,11 +40,10 @@ export class GrahamScan {
         const sortedS = mergeSort(S, pivot);
         
         for (let i = 2; i < sortedS.length; i++) {
-            while (this.#orientation(sortedS[i - 2], sortedS[i - 1], sortedS[i]) == 1) {
+            while (orientation(sortedS[i - 2], sortedS[i - 1], sortedS[i]) > 0) {
                 sortedS.splice(i - 1, 1);
             }
         }
-
 
         const convexHull = new ConvexHull();
 
@@ -52,22 +52,6 @@ export class GrahamScan {
         }
 
         return convexHull;
-    }
-
-    /**
-     * 
-     * Returns the orientation of the given three points.
-     * 
-     * @returns {number} - 0 if p, q, r are colinear, 1 if clockwise, 2 if counter-clockwise.
-     */
-    static #orientation(p, q, r) {
-        let val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
-
-        if (val == 0) {
-            return 0;
-        } else { 
-            return val > 0 ? 1 : 2;
-        }
     }
 
 }

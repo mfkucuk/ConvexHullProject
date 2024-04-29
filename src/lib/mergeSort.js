@@ -1,3 +1,5 @@
+import { calculateAngle } from "./calculateAngle.js";
+
 export function mergeSort(points, pivot) {
     if (points.length <= 1) {
         return points;
@@ -35,13 +37,4 @@ function merge(left, right, pivot) {
     merged.push(...right.slice(j));
   
     return merged;
-}
-  
-function calculateAngle(point, pivot) {
-    const dx = point.x - pivot.x;
-    const dy = point.y - pivot.y;
-
-    const angle = Math.atan2(dy, dx) || 0;
-
-    return angle;
 }

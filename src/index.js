@@ -1,5 +1,6 @@
 import { ConvexHull } from "./ConvexHull.js";
 import { GrahamScan } from "./algorithms/GrahamScan.js";
+import { JarvisMarch } from "./algorithms/JarvisMarch.js";
 import { mergeSort } from "./lib/mergeSort.js";
 
 // ENTRY POINT //
@@ -15,7 +16,8 @@ function main() {
         { x: 15, y: 15 }
     ];
 
-    let convexHull = GrahamScan.construct(S);
+    //let convexHull = GrahamScan.construct(S);
+    let convexHull = JarvisMarch.construct(S);
 
     console.log(convexHull.points);
 }
