@@ -70,7 +70,6 @@ export class JarvisMarch {
                 }
 
                 let angle = calculateAngleRelativeToNegativeX(currentPoint, point);
-                console.log(`${currentPoint.x},${currentPoint.y}x${point.x},${point.y} : ${angle}`);
 
                 if (lowestAngle > angle) {
                     lowestAngle = angle;
