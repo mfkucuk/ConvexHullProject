@@ -1,0 +1,16 @@
+/**
+ * 
+ * @param {CanvasRenderingContext2D} ctx 
+ * @param {Object[]} S 
+ */
+export function drawPoints(ctx, S) {
+
+    ctx.fillStyle = 'black';
+
+    for (const point of S) {
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 3, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+    }
+}

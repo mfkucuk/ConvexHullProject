@@ -2,24 +2,35 @@ import { ConvexHull } from "./ConvexHull.js";
 import { GrahamScan } from "./algorithms/GrahamScan.js";
 import { JarvisMarch } from "./algorithms/JarvisMarch.js";
 import { mergeSort } from "./lib/mergeSort.js";
+import { drawConvexHull } from "./rendering/drawConvexHull.js";
+import { drawPoints } from "./rendering/drawPoints.js";
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// make the bottom-left corner the origin
+ctx.translate(0, canvas.height);
+ctx.scale(1, -1);
 
 // ENTRY POINT //
 function main() {
     console.log('program start');
 
     const S = [
-        { x: 20, y: 20 },
-        { x: 10, y: 20 },
-        { x: 20, y: 10 },
-        { x: 30, y: 30 },
-        { x: 10, y: 10 },
-        { x: 15, y: 15 }
+        { x: 200, y: 200 },
+        { x: 100, y: 200 },
+        { x: 200, y: 100 },
+        { x: 300, y: 300 },
+        { x: 100, y: 100 },
+        { x: 150, y: 150 }
     ];
+
+    drawPoints(ctx, S);
 
     //let convexHull = GrahamScan.construct(S);
     let convexHull = JarvisMarch.construct(S);
 
-    console.log(convexHull.points);
+    drawConvexHull(ctx, convexHull);
 }
 
 window.onload = main;
