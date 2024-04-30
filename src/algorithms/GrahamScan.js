@@ -38,10 +38,15 @@ export class GrahamScan {
         S[pivotIndex].y = tempPoint.y;
 
         const sortedS = mergeSort(S, pivot);
+
+        for (const point of sortedS) {
+            console.log(point);
+        }
         
         for (let i = 2; i < sortedS.length; i++) {
             while (orientation(sortedS[i - 2], sortedS[i - 1], sortedS[i]) > 0) {
                 sortedS.splice(i - 1, 1);
+                i--;
             }
         }
 

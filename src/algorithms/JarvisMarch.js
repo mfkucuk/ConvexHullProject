@@ -45,7 +45,7 @@ export class JarvisMarch {
                     continue;
                 }
 
-                let angle = calculateAngle(point, currentPoint);
+                let angle = calculateAngle(currentPoint, point);
 
                 if (lowestAngle > angle) {
                     lowestAngle = angle;
