@@ -8,7 +8,7 @@ export function distalPoints(line, points) {
     let distance=0;
     let max_distance=0;
 
-    for(i=0; i<points.length; i++) { 
+    for(i=0; i < points.length; i++) { 
         point = points[i];
         distance = distanceFromLine(point, line);
 
