@@ -6,6 +6,7 @@
 export function drawPoints(ctx, S) {
 
     ctx.fillStyle = 'black';
+    ctx.strokeStyle = 'black';
 
     for (const point of S) {
         ctx.beginPath();

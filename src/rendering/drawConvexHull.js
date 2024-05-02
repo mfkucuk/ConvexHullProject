@@ -7,6 +7,7 @@ import { ConvexHull } from "../ConvexHull.js";
  */
 export function drawConvexHull(ctx, convexHull) {
 
+    ctx.fillStyle = 'red';
     ctx.strokeStyle = 'red';
 
     for (let i = 0; i < convexHull.points.length - 1; i++) {
