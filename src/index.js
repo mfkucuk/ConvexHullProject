@@ -24,13 +24,14 @@ function main() {
         { x: 300, y: 300 },
         { x: 50,  y: 300 },
         { x: 100, y: 100 },
-        { x: 150, y: 150 }
+        { x: 150, y: 150 },
+        { x: 150, y: 450 },
     ];
 
     drawPoints(ctx, S);
 
-    let convexHull = GrahamScan.construct(S);
-    //let convexHull = JarvisMarch.construct(S);
+    //let convexHull = GrahamScan.construct(S);
+    let convexHull = JarvisMarch.construct(S);
 
     drawConvexHull(ctx, convexHull);
 }

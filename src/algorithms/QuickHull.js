@@ -1,3 +1,8 @@
+import { ConvexHull } from "../ConvexHull.js";
+import { distalPoints } from "../lib/distalPoints.js";
+import { getMinMaxPoints } from "../lib/getMinMaxPoints.js";
+import { addSegments } from "../lib/addSegments.js";
+
 export class QuickHull {
 
     /**
@@ -7,21 +12,22 @@ export class QuickHull {
      * @param {Object[]} S - List of points to generate the convex hull. 
      */
     static construct(S) {
+        const convexHull = new ConvexHull();
 
-        let lowestXPoint = { x: Number.MAX_SAFE_INTEGER, y: 0 };
-        let highestXPoint = { x: Number.MIN_SAFE_INTEGER, y: 0 };
-        
-        for (const point of S) {
-            if (lowestXPoint.x > point.x) {
-                lowestXPoint.x = point.x;
-                lowestXPoint.y = point.y;
-            }
-
-            if (highestXPoint < point.x) {
-                highestXPoint.x = point.x;
-                highestXPoint.y = point.y;
-            }
+        if( S.length == 3) {
+            convexHull.addPoint(S[0]);
+            convexHull.addPoint(S[1]);
+            convexHull.addPoint(S[2]);
+            return convexHull;
         }
+
+        let lowestPoint, highestPoint = getMinMaxPoints(S);
+        let baseline = getMinMaxPoints(S);
+        
+        addSegments(baseline, S, convexHull);
+        addSegments([highestPoint, lowestPoint], S, convexHull);
+
+        return convexHull;
     }
 
 }
