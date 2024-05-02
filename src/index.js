@@ -38,6 +38,12 @@ function main() {
 
     // EVENTS //
     canvas.addEventListener('click', (event) => {
+        for (const point of S) {
+            if (point.x == event.x && point.y == event.y) {
+                return;
+            }
+        }
+        
         clearCanvas();
 
         S.push({ x: event.x, y: event.y });
