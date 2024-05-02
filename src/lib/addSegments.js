@@ -1,5 +1,5 @@
-import { ConvexHull } from "../ConvexHull";
-import { distalPoints } from "./distalPoints";
+import { ConvexHull } from "../ConvexHull.js";
+import { distalPoints } from "./distalPoints.js";
 export function addSegments(line, points, convexHull) {
     var distal = distalPoints(line, points);
     if(!distal.max) return convexHull.addPoint(line[0]);

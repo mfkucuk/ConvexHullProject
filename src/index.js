@@ -1,6 +1,7 @@
 import { ConvexHull } from "./ConvexHull.js";
 import { GrahamScan } from "./algorithms/GrahamScan.js";
 import { JarvisMarch } from "./algorithms/JarvisMarch.js";
+import { QuickHull } from "./algorithms/QuickHull.js";
 import { mergeSort } from "./lib/mergeSort.js";
 import { drawConvexHull } from "./rendering/drawConvexHull.js";
 import { drawPoints } from "./rendering/drawPoints.js";
@@ -37,7 +38,7 @@ function main() {
 
     // EVENTS //
     canvas.addEventListener('click', (event) => {
-        ctx.clearRect(0, 0, 600, 600);
+        clearCanvas();
 
         S.push({ x: event.x, y: event.y });
 
@@ -60,8 +61,24 @@ function main() {
             case 'Jarvis\'s March':
                 currentAlgorithm = JarvisMarch;
                 break;
+
+            case 'QuickHull':
+                currentAlgorithm = QuickHull;
+                break;
         }
+
+        clearCanvas();
+
+        drawPoints(ctx, S);
+
+        let convexHull = currentAlgorithm.construct(S);
+
+        drawConvexHull(ctx, convexHull);
     })
 }
 
 window.onload = main;
+
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+}

@@ -1,14 +1,16 @@
-export function distalPoints(line, points) {
-    var i;
-    var outer_points = [];
-    var point;
-    var distal_point;
-    var distance=0;
-    var max_distance=0;
+import { distanceFromLine } from "./distanceFromLine.js";
 
-    for(i=0; i<points.length; i++) {
+export function distalPoints(line, points) {
+    let i;
+    let outer_points = [];
+    let point;
+    let distal_point;
+    let distance=0;
+    let max_distance=0;
+
+    for(i=0; i<points.length; i++) { 
         point = points[i];
-        distance = distanceFromLine(point,line);
+        distance = distanceFromLine(point, line);
 
         if(distance > 0) outer_points.push(point);
         else continue; //short circuit
