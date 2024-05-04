@@ -71,6 +71,10 @@ function main() {
             case 'QuickHull':
                 currentAlgorithm = QuickHull;
                 break;
+            
+            case 'MergeHull':
+                currentAlgorithm = MergeHull;
+                break;
         }
 
         clearCanvas();
