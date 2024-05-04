@@ -1,55 +1,54 @@
-// Helper function to find orientation of ordered triplet (p, q, r)
-function orientation(p, q, r) {
-    let val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
-    if (val == 0) return 0; // colinear
-    return (val > 0) ? 1 : 2; // clock or counterclock wise
-}
+import { ConvexHull } from "../ConvexHull.js";
 
-export function mergeConvexHulls(convexHull1, convexHull2) {
-    // Merge the hulls
-    let mergedHull = [];
+export function mergeConvexHulls(hull1, hull2) {
+    // Get the points of the two hulls
+    const points1 = hull1.points;
+    const points2 = hull2.points;
 
-    // Find the upper and lower tangent points on each hull
-    let upperTangentThis = null, upperTangentOther = null, lowerTangentThis = null, lowerTangentOther = null;
+    // Merge the points of the two hulls
+    const mergedPoints = [...points1, ...points2];
 
-    for (let i = 0; i < convexHull1.points.length; i++) {
-        let prev = (i === 0) ? convexHull1.points.length - 1 : i - 1;
-        let next = (i === convexHull1.points.length - 1) ? 0 : i + 1;
-        let orientationPrev = orientation(convexHull1.points[prev], convexHull1.points[i], convexHull1.points[next]);
-        if (orientationPrev === 2 && !upperTangentThis) {
-            upperTangentThis = convexHull1.points[i];
-        } else if (orientationPrev === 1 && !lowerTangentThis) {
-            lowerTangentThis = convexHull1.points[i];
+    // Sort the merged points by their x-coordinate
+    mergedPoints.sort((a, b) => a.x - b.x);
+
+    // Initialize the merged hull
+    const mergedHull = new ConvexHull();
+
+    // Find the upper hull
+    for (let i = 0; i < mergedPoints.length; i++) {
+        while (mergedHull.points.length >= 2 &&
+            isClockwiseTurn(
+                mergedHull.points[mergedHull.points.length - 2],
+                mergedHull.points[mergedHull.points.length - 1],
+                mergedPoints[i]
+            )) {
+            mergedHull.removePoint(mergedHull.points.length - 1);
         }
+        mergedHull.addPoint(mergedPoints[i]);
     }
 
-    for (let i = 0; i < convexHull2.points.length; i++) {
-        let prev = (i === 0) ? convexHull2.points.length - 1 : i - 1;
-        let next = (i === convexHull2.points.length - 1) ? 0 : i + 1;
-        let orientationPrev = orientation(convexHull2.points[prev], convexHull2.points[i], convexHull2.points[next]);
-        if (orientationPrev === 2 && !upperTangentOther) {
-            upperTangentOther = convexHull2.points[i];
-        } else if (orientationPrev === 1 && !lowerTangentOther) {
-            lowerTangentOther = convexHull2.points[i];
+    // Find the lower hull
+    const lowerHullStartIndex = mergedHull.points.length -1;
+    for (let i = mergedPoints.length - 2; i >= 0; i--) {
+        while (mergedHull.points.length >= lowerHullStartIndex &&
+            isClockwiseTurn(
+                mergedHull.points[mergedHull.points.length - 2],
+                mergedHull.points[mergedHull.points.length - 1],
+                mergedPoints[i]
+            )) {
+            mergedHull.removePoint(mergedHull.points.length - 1);
         }
+        mergedHull.addPoint(mergedPoints[i]);
     }
 
-    // Add upper tangent points and the segment connecting them
-    mergedHull.push(upperTangentThis, upperTangentOther);
-    let currentIndex = convexHull1.points.indexOf(upperTangentThis) + 1;
-    while (convexHull1.points[currentIndex] !== lowerTangentThis) {
-        mergedHull.push(convexHull1.points[currentIndex]);
-        currentIndex = (currentIndex + 1) % convexHull1.points.length;
-    }
-    mergedHull.push(lowerTangentThis);
-
-    // Add lower tangent points and the segment connecting them
-    currentIndex = convexHull2.points.indexOf(upperTangentOther) + 1;
-    while (convexHull2.points[currentIndex] !== lowerTangentOther) {
-        mergedHull.push(convexHull2.points[currentIndex]);
-        currentIndex = (currentIndex + 1) % convexHull2.points.length;
-    }
-    mergedHull.push(lowerTangentOther);
+    // Remove the duplicate point at the end (first point of the upper hull)
+    mergedHull.removePoint(mergedHull.points.length - 1);
 
     return mergedHull;
+}
+
+// Function to check if three points make a clockwise turn
+function isClockwiseTurn(p1, p2, p3) {
+    const crossProduct = (p2.x - p1.x) * (p3.y - p1.y) - (p3.x - p1.x) * (p2.y - p1.y);
+    return crossProduct < 0;
 }

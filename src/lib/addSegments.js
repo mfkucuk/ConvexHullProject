@@ -1,5 +1,6 @@
 import { ConvexHull } from "../ConvexHull.js";
 import { distalPoints } from "./distalPoints.js";
+
 export function addSegments(line, points, convexHull) {
     var distal = distalPoints(line, points);
     

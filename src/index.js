@@ -5,6 +5,7 @@ import { QuickHull } from "./algorithms/QuickHull.js";
 import { mergeSort } from "./lib/mergeSort.js";
 import { drawConvexHull } from "./rendering/drawConvexHull.js";
 import { drawPoints } from "./rendering/drawPoints.js";
+import { MergeHull } from "./algorithms/MergeHull.js";
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
