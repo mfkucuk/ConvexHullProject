@@ -5,7 +5,7 @@ function orientation(p, q, r) {
     return (val > 0) ? 1 : 2; // clock or counterclock wise
 }
 
-export function mergeHulls(convexHull1, convexHull2) {
+export function mergeConvexHulls(convexHull1, convexHull2) {
     // Merge the hulls
     let mergedHull = [];
 
