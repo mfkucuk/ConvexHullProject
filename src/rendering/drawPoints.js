@@ -1,3 +1,5 @@
+import { clearCanvas } from "./clearCanvas.js";
+
 /**
  * 
  * @param {CanvasRenderingContext2D} ctx 

@@ -6,15 +6,19 @@ import { mergeSort } from "./lib/mergeSort.js";
 import { drawConvexHull } from "./rendering/drawConvexHull.js";
 import { drawPoints } from "./rendering/drawPoints.js";
 import { MergeHull } from "./algorithms/MergeHull.js";
+import { clearCanvas } from "./rendering/clearCanvas.js";
+
+let isAnimationEnabled = false;
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 const algorithmSelect = document.getElementById('algorithmSelect');
 const currentAlgorithmText = document.getElementById('currentAlgorithm');
+const animationCheckbox = document.getElementById('animation');
 
 // ENTRY POINT //
-function main() {
+async function main() {
     console.log('program start');
 
     let currentAlgorithm = GrahamScan;
@@ -31,32 +35,26 @@ function main() {
         { x: 149, y: 450 },
     ];
 
-    drawPoints(ctx, S);
+    let convexHull = await currentAlgorithm.construct(S);
 
-    let convexHull = currentAlgorithm.construct(S);
-
-    drawConvexHull(ctx, convexHull);
+    drawConvexHull(ctx, convexHull, S);
 
     // EVENTS //
-    canvas.addEventListener('click', (event) => {
+    canvas.addEventListener('click', async (event) => {
         for (const point of S) {
             if (point.x == event.x && point.y == event.y) {
                 return;
             }
         }
         
-        clearCanvas();
-
         S.push({ x: event.x, y: event.y });
 
-        drawPoints(ctx, S);
+        let convexHull = await currentAlgorithm.construct(S);
 
-        let convexHull = currentAlgorithm.construct(S);
-
-        drawConvexHull(ctx, convexHull);
+        drawConvexHull(ctx, convexHull, S);
     });
 
-    algorithmSelect.addEventListener('change', (event) => {
+    algorithmSelect.addEventListener('change', async (event) => {
 
         currentAlgorithmText.innerText = event.target.value;
 
@@ -78,18 +76,19 @@ function main() {
                 break;
         }
 
-        clearCanvas();
+        let convexHull = await currentAlgorithm.construct(S);
 
-        drawPoints(ctx, S);
+        drawConvexHull(ctx, convexHull, S);
+    });
 
-        let convexHull = currentAlgorithm.construct(S);
-
-        drawConvexHull(ctx, convexHull);
-    })
+    animationCheckbox.addEventListener('change', (event) => {
+        globals.isAnimationEnabled = animationCheckbox.checked;
+    });
 }
+
+export const globals = {
+    isAnimationEnabled: isAnimationEnabled,
+    ctx: ctx,
+};
 
 window.onload = main;
-
-function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-}

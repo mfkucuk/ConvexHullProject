@@ -1,11 +1,17 @@
 import { ConvexHull } from "../ConvexHull.js";
+import { clearCanvas } from "./clearCanvas.js";
+import { drawPoints } from "./drawPoints.js";
 
 /**
  * 
  * @param {CanvasRenderingContext2D} ctx 
  * @param {ConvexHull} convexHull
  */
-export function drawConvexHull(ctx, convexHull) {
+export function drawConvexHull(ctx, convexHull, S) {
+
+    clearCanvas(ctx);
+
+    drawPoints(ctx, S);
 
     ctx.fillStyle = 'red';
     ctx.strokeStyle = 'red';
