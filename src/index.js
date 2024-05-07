@@ -51,6 +51,8 @@ async function main() {
         }
         
         S.push({ x: x, y: y });
+
+        pointCount.innerText = `${S.length}`;
         
         drawPoints(ctx, S);
     });
@@ -88,8 +90,7 @@ async function main() {
 
         drawConvexHull(ctx, convexHull, S);
 
-        pointCount.innerText = `${S.length}`;
-        pointCountOnHull.innerText = `${convexHull.points.length}`
+        pointCountOnHull.innerText = `${convexHull.points.length}`;
     });
 
     clearButton.addEventListener('click', () => {
@@ -97,11 +98,16 @@ async function main() {
             S.pop();
         }
 
+        pointCount.innerText = '0';
+        pointCountOnHull.innerText = '0';
+
         clearCanvas(ctx);
         drawPoints(ctx, S);
     });    
 
     resetButton.addEventListener('click', () => {
+        pointCountOnHull.innerText = '0';
+
         clearCanvas(ctx);
         drawPoints(ctx, S);
     });
