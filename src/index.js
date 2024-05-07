@@ -122,6 +122,8 @@ async function main() {
     });
 
     runButton.addEventListener('click', async () => {
+        pointCountOnHull.innerText = '0';
+        
         let convexHull = await currentAlgorithm.construct(S);
 
         drawConvexHull(ctx, convexHull, S);

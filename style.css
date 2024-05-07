@@ -304,6 +304,7 @@ a:hover {
   background: #4CAF50;
   margin-left: 4px;
   transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .zoom-marks {
