@@ -13,6 +13,10 @@ export function drawConvexHull(ctx, convexHull, S) {
 
     drawPoints(ctx, S);
 
+    if (convexHull.points.length < 2) {
+        return;
+    }
+
     ctx.fillStyle = 'red';
     ctx.strokeStyle = 'red';
 

@@ -4,25 +4,35 @@
         <title>Convex Hull</title>
     
         <script type="module" src="/src/index.js"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <canvas id="canvas" width="600" height="600"></canvas>
 
-        <br/>
-        
-        <select id="algorithmSelect">
-            <option>Graham's Scan</option>
-            <option>Jarvis's March</option>
-            <option>QuickHull</option>
-            <option>MergeHull</option>
-        </select>
-        
-        <br/>
+        <header id="navbar">
+            <nav>
+                <ul>
+                    <li><h1>Convex Hull</h1></li>
+                    <li class="dropdown">
+                        <p>Algorithms</p>
+                        <ul class="dropdown-content"> 
+                            <li><a id="graham" href="#">Graham's Scan</a></li>
+                            <li><a id="jarvis" href="#">Jarvis's March</a></li>
+                            <li><a id="quick" href="#">QuickHull</a></li>
+                            <li><a id="merge" href="#">MergeHull</a></li>
+                        </ul>
+                    </li>
+                    <li><button id="runButton">Run <p id="currentAlgorithm">Graham's Scan</p></button></li>
+                    <li><a id="clearButton" href="#">Clear Points</a></li>
+                    <li><a id="resetButton" href="#">Reset Hull</a></li>
+                    <li>Points: <p id="pointCount">0</p></li>
+                    <li>Points on Hull: <p id="pointCountOnHull">0</p></li>
+                    <li>Animate <input type="checkbox" id="animation"></li>
+                </ul>
+            </nav>
+        </header>
 
-        <h3>Current algorithm:</h3>
-        <p id="currentAlgorithm">Graham's Scan</p>
-
-        <input type="checkbox" id="animation">
-
+        <div id="canvas-container">
+            <canvas id="canvas" width="600" height="600"></canvas>
+        </div>
     </body>
 </html>

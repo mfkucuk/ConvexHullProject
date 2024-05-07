@@ -29,6 +29,7 @@ export function drawGrahamAnimation(ctx, anim, S) {
  * @param {CanvasRenderingContext2D} ctx 
  * @param {object[]} anim
  * @param {object[]} S
+ * @param {object} tryPoint - The point where Jarvis's march is currently trying.
  */
 export function drawJarvisAnimation(ctx, anim, S, tryPoint) {
 
@@ -54,4 +55,27 @@ export function drawJarvisAnimation(ctx, anim, S, tryPoint) {
         ctx.lineTo(tryPoint.x, tryPoint.y);
     }
     ctx.stroke();
+}
+
+/**
+ * 
+ * @param {CanvasRenderingContext2D} ctx 
+ * @param {object[]} anim
+ * @param {object[]} S
+ */
+export function drawQuickAnimation(ctx, anim, S) {
+
+    clearCanvas(ctx);
+
+    drawPoints(ctx, S);
+
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'red';
+
+    for (let i = 0; i < anim.length; i++) {
+        ctx.beginPath();
+        ctx.moveTo(anim[i][0].x, anim[i][0].y);
+        ctx.lineTo(anim[i][1].x, anim[i][1].y);
+        ctx.stroke();
+    }
 }

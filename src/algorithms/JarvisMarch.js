@@ -14,6 +14,10 @@ export class JarvisMarch {
      */
     static async construct(S) {
 
+        if (S.length < 2) {
+            return new ConvexHull();
+        }
+
         const pivot = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER };
         const highestPoint = { x: Number.MIN_SAFE_INTEGER, y: 0 };
         

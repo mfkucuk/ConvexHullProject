@@ -13,9 +13,22 @@ let isAnimationEnabled = false;
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-const algorithmSelect = document.getElementById('algorithmSelect');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const grahamButton = document.getElementById('graham');
+const jarvisButton = document.getElementById('jarvis');
+const quickButton = document.getElementById('quick');
+const mergeButton = document.getElementById('merge');
+
 const currentAlgorithmText = document.getElementById('currentAlgorithm');
 const animationCheckbox = document.getElementById('animation');
+const runButton = document.getElementById('runButton');
+const clearButton = document.getElementById('clearButton');
+const resetButton = document.getElementById('resetButton');
+
+const pointCount = document.getElementById('pointCount');
+const pointCountOnHull = document.getElementById('pointCountOnHull');
 
 // ENTRY POINT //
 async function main() {
@@ -23,66 +36,74 @@ async function main() {
 
     let currentAlgorithm = GrahamScan;
 
-    const S = [
-        { x: 200, y: 200 },
-        { x: 100, y: 200 },
-        { x: 200, y: 100 },
-        { x: 151, y: 500 },
-        { x: 300, y: 300 },
-        { x: 50,  y: 300 },
-        { x: 100, y: 100 },
-        { x: 150, y: 150 },
-        { x: 149, y: 450 },
-    ];
-
-    let convexHull = await currentAlgorithm.construct(S);
-
-    drawConvexHull(ctx, convexHull, S);
+    const S = [];
 
     // EVENTS //
     canvas.addEventListener('click', async (event) => {
+
+        const x = event.x - parseInt(canvas.getBoundingClientRect().left);
+        const y = event.y - parseInt(canvas.getBoundingClientRect().top);
+
         for (const point of S) {
-            if (point.x == event.x && point.y == event.y) {
+            if (point.x == x && point.y == y) {
                 return;
             }
         }
         
-        S.push({ x: event.x, y: event.y });
-
-        let convexHull = await currentAlgorithm.construct(S);
-
-        drawConvexHull(ctx, convexHull, S);
+        S.push({ x: x, y: y });
+        
+        drawPoints(ctx, S);
     });
 
-    algorithmSelect.addEventListener('change', async (event) => {
+    grahamButton.addEventListener('click', async () => {
+        currentAlgorithmText.innerText = 'Graham\'s Scan';
 
-        currentAlgorithmText.innerText = event.target.value;
+        currentAlgorithm = GrahamScan;
+    });
 
-        switch (event.target.value) {
-            case 'Graham\'s Scan':
-                currentAlgorithm = GrahamScan;
-                break;
+    jarvisButton.addEventListener('click', async () => {
+        currentAlgorithmText.innerText = 'Jarvis\'s March';
 
-            case 'Jarvis\'s March':
-                currentAlgorithm = JarvisMarch;
-                break;
+        currentAlgorithm = JarvisMarch;
+    });
 
-            case 'QuickHull':
-                currentAlgorithm = QuickHull;
-                break;
-            
-            case 'MergeHull':
-                currentAlgorithm = MergeHull;
-                break;
-        }
+    quickButton.addEventListener('click', async () => {
+        currentAlgorithmText.innerText = 'QuickHull';
 
-        let convexHull = await currentAlgorithm.construct(S);
+        currentAlgorithm = QuickHull;
+    });
 
-        drawConvexHull(ctx, convexHull, S);
+    mergeButton.addEventListener('click', async () => {
+        currentAlgorithmText.innerText = 'MergeHull';
+
+        currentAlgorithm = MergeHull;        
     });
 
     animationCheckbox.addEventListener('change', (event) => {
         globals.isAnimationEnabled = animationCheckbox.checked;
+    });
+
+    runButton.addEventListener('click', async () => {
+        let convexHull = await currentAlgorithm.construct(S);
+
+        drawConvexHull(ctx, convexHull, S);
+
+        pointCount.innerText = `${S.length}`;
+        pointCountOnHull.innerText = `${convexHull.points.length}`
+    });
+
+    clearButton.addEventListener('click', () => {
+        while (S.length > 0) {
+            S.pop();
+        }
+
+        clearCanvas(ctx);
+        drawPoints(ctx, S);
+    });    
+
+    resetButton.addEventListener('click', () => {
+        clearCanvas(ctx);
+        drawPoints(ctx, S);
     });
 }
 

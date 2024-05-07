@@ -16,6 +16,10 @@ export class GrahamScan {
      */
     static async construct(S) {
 
+        if (S.length < 2) {
+            return new ConvexHull();
+        }
+
         const pivot = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER };
         let pivotIndex = 0;
         

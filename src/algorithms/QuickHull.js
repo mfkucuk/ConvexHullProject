@@ -1,6 +1,12 @@
 import { ConvexHull } from "../ConvexHull.js";
+import { globals } from "../index.js";
+import { sleep } from "../lib/sleep.js";
+import { drawQuickAnimation } from "../rendering/drawAnimation.js";
 
 export class QuickHull {
+
+    static #animationPoints = [];
+    static #S = [];
 
     /**
      * 
@@ -8,7 +14,14 @@ export class QuickHull {
      * 
      * @param {object[]} S - List of points to generate the convex hull. 
      */
-    static construct(S) {
+    static async construct(S) {
+
+        if (S.length < 2) {
+            return new ConvexHull();
+        }
+
+        this.#animationPoints = [];
+        this.#S = S;
 
         const convexHull = new ConvexHull();
 
@@ -21,8 +34,8 @@ export class QuickHull {
 
         let baseline = this.#getMinMaxPoints(S);
         
-        this.#addSegments(baseline, S, convexHull);
-        this.#addSegments([baseline[1], baseline[0]], S, convexHull);
+        await this.#addSegments(baseline, S, convexHull);
+        await this.#addSegments([baseline[1], baseline[0]], S, convexHull);
 
         return convexHull;
     }
@@ -45,15 +58,41 @@ export class QuickHull {
         return [minPoint, maxPoint];
     }
 
-    static #addSegments(line, points, convexHull) {
+    static async #addSegments(line, points, convexHull) {
         var distal = this.#distalPoints(line, points);
-        
+
         if (distal.max.x == -27 && distal.max.y == -27) {
             return convexHull.addPoint(line[0].x, line[0].y);
         }
+
+        if (globals.isAnimationEnabled) {
+            this.#animationPoints.push([line[0], line[1]]);
+            drawQuickAnimation(globals.ctx, this.#animationPoints, this.#S);
+            
+            await sleep(800);
+            
+            this.#animationPoints.push([line[0], distal.max]);
+            this.#animationPoints.push([distal.max, line[1]]);
+
+            const indices = [];
+            for (const points of this.#animationPoints) {
+                if ((points[0] == line[0] && points[1] == line[1]) || points[0] == line[1] && points[1] == line[0]) {
+                    indices.push(this.#animationPoints.indexOf(points));
+                }
+            }
+
+            if (indices.length > 1) {
+                this.#animationPoints.splice(indices[0], 1);
+                this.#animationPoints.splice(indices[1] - 1, 1);
+            }
+
+            drawQuickAnimation(globals.ctx, this.#animationPoints, this.#S);
+            
+            await sleep(800);
+        }
         
-        this.#addSegments([line[0], distal.max], distal.points, convexHull);
-        this.#addSegments([distal.max, line[1]], distal.points, convexHull);
+        await this.#addSegments([line[0], distal.max], distal.points, convexHull);
+        await this.#addSegments([distal.max, line[1]], distal.points, convexHull);
     }
 
     static #distalPoints(line, points) {
