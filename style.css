@@ -321,3 +321,113 @@ a:hover {
   color: #999;
   font-size: 15px;
 }
+
+.info-container {
+    position: fixed;
+    display: inline-block; /* Ensures elements stack horizontally */
+    z-index: 2;
+    bottom: 5%;
+    right: 0%;
+    width: 15vw;
+    height: 22vh;
+  }
+  
+  .info-button {
+    border: none;
+    position: fixed;
+    font-size: 15px;
+    padding-top: 15px; 
+    padding-bottom: 15px; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    border-radius: 50%; /* Creates a circular button */
+    background-color: #ddd; /* Adjust background color as needed */
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out; /* Add hover effect */
+    z-index: 2;
+    font-family: FontAwesome, sans-serif; /* Include Font Awesome font */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    bottom: 5%;
+    right: 3%;
+  }
+  
+  .info-button:hover {
+    background-color: #ddd; /* Adjust hover background color */
+    border-width: 1px;
+    z-index: 2;
+  }
+  
+  .info-card {
+    position: absolute;
+    top: 0%; /* Positions the card below the button initially */
+    left: 50%; /* Centers the card horizontally */
+    transform: translateX(-50%); /* Adjust positioning as needed */
+    padding: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    opacity: 0; /* Hides the card initially */
+    transition: opacity 0.2s ease-in-out; /* Add hover effect for opacity */
+    z-index: 2;
+  }
+  
+  .info-container:hover .info-card {
+    opacity: 1; /* Reveals the card on hover */
+    z-index: 2;
+  }
+
+  .container {
+    display: inline-flex; /* Allow stacking navbar and content vertically */
+    flex-direction: column; /* Stack elements on top of each other */
+    position: fixed;
+    right: 1.5%;
+    top: 10%;
+    z-index: 4;
+  }
+
+  .container2 {
+    display: inline-flex; /* Allow stacking navbar and content vertically */
+    flex-direction: column; /* Stack elements on top of each other */
+    position: fixed;
+    right: 1.5%;
+    top: 35%;
+    z-index: 4;
+  }
+  
+  .content {
+    display: flex; /* Allow placing buttons and text side-by-side */
+    justify-content: space-between; /* Align elements horizontally with space between */
+    align-items: flex-start; /* Vertically align content at the top */
+    padding: 20px; /* Add some padding for aesthetics */
+  }
+  
+  h2 {
+    margin: 0; /* Remove default margin for better spacing */
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-content: end;
+  }
+  
+  .generate-button {
+    margin-left: 70%;
+    border: 1px;
+    padding-top: 15px; 
+    padding-bottom: 15px; 
+    padding-left: 8px; 
+    width: 50px;
+    padding-right: 8px; 
+    border-radius: 50%; /* Creates round buttons */
+    background-color: #ddd;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    cursor: pointer;
+    font-size: 15px;
+    margin-bottom: 10px; /* Add spacing between buttons */
+  }
