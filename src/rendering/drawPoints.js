@@ -7,6 +7,7 @@ import { clearCanvas } from "./clearCanvas.js";
  */
 export function drawPoints(ctx, S) {
 
+    //#037249
     ctx.fillStyle = 'black';
     ctx.strokeStyle = 'black';
 

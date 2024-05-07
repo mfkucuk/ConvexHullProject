@@ -16,6 +16,8 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+const dropdownButton = document.getElementById('dropbtn');
+
 const grahamButton = document.getElementById('graham');
 const jarvisButton = document.getElementById('jarvis');
 const quickButton = document.getElementById('quick');
@@ -57,10 +59,27 @@ async function main() {
         drawPoints(ctx, S);
     });
 
+    grahamButton.addEventListener('mouseover', () => {
+        dropdownButton.parentElement.classList.add('open');
+    });
+
+    grahamButton.addEventListener('mouseout', () => {
+        dropdownButton.parentElement.classList.remove('open');
+    });
+
     grahamButton.addEventListener('click', async () => {
         currentAlgorithmText.innerText = 'Graham\'s Scan';
 
         currentAlgorithm = GrahamScan;
+    });
+
+
+    jarvisButton.addEventListener('mouseover', () => {
+        dropdownButton.parentElement.classList.add('open');
+    });
+
+    jarvisButton.addEventListener('mouseout', () => {
+        dropdownButton.parentElement.classList.remove('open');
     });
 
     jarvisButton.addEventListener('click', async () => {
@@ -69,10 +88,26 @@ async function main() {
         currentAlgorithm = JarvisMarch;
     });
 
+    quickButton.addEventListener('mouseover', () => {
+        dropdownButton.parentElement.classList.add('open');
+    });
+
+    quickButton.addEventListener('mouseout', () => {
+        dropdownButton.parentElement.classList.remove('open');
+    });
+
     quickButton.addEventListener('click', async () => {
         currentAlgorithmText.innerText = 'QuickHull';
 
         currentAlgorithm = QuickHull;
+    });
+
+    mergeButton.addEventListener('mouseover', () => {
+        dropdownButton.parentElement.classList.add('open');
+    });
+
+    mergeButton.addEventListener('mouseout', () => {
+        dropdownButton.parentElement.classList.remove('open');
     });
 
     mergeButton.addEventListener('click', async () => {

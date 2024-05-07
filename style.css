@@ -15,6 +15,31 @@ h1 {
     z-index: 1; 
 }
   
+.runButton {
+    padding-top: 2vh; 
+    padding-bottom: 2vh; 
+    padding-left: 1vw; 
+    padding-right: 1vw; 
+    border-radius: 6px;
+    background-color: #04AA6D;
+    color: white;
+    border: none;
+    margin-right: 80px;
+    font-size: 16px;
+    margin-left: 80px;
+}
+
+.runButton:hover {
+    padding-top: 2vh; 
+    padding-bottom: 2vh; 
+    padding-left: 1vw; 
+    padding-right: 1vw; 
+    border-radius: 6px;
+    background-color: #037249;
+    color: white;
+    border: none;
+    font-size: 16px;
+}
 
 #algorithmSelect, #animation {
     z-index: 0;
@@ -24,7 +49,7 @@ h1 {
 .button {
     padding: 5px 10px;
     border: 1px solid #ddd;
-    border-radius: 3px;
+    border-radius: 6px;
     cursor: pointer;
 }
 
@@ -32,7 +57,7 @@ header {
     background-color: #f0f0f0; 
     padding: 20px 20px;
     display: flex; 
-    justify-content: space-between; 
+    justify-content: space-evenly; 
     align-items: center;  
     position: fixed;
     top: 0;
@@ -63,15 +88,49 @@ nav ul {
 
 nav li {
     display: inline-block;
-    margin-right: 20px;
 }
   
-nav ul li {
-    margin-right: 80px; 
+
+.dropbtn {
+    background-color: darkturquoise;
+    color: white;
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+
 }
-  
+
+.dropbtn:hover {
+    background-color: rgb(0, 134, 136);
+    color: white;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+
+}
+
+.btn2 {
+    background-color: red;
+    color: white;
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    margin-right: 80px;
+    
+}
+
+.btn2:hover {
+    background-color: #990000;
+    color: white;
+}
+
 nav li.dropdown { 
     position: relative;
+    display: inline-block;
 }
   
 nav li.dropdown a { 
@@ -81,27 +140,53 @@ nav li.dropdown a {
 nav ul.dropdown-content { 
     position: absolute;
     display: none; 
+    align-content: center;
     background-color: #f1f1f1;
-    min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
   
+.dropdownItem {
+    background-color: darkturquoise;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+  
+.dropdownItem:hover {
+    background-color: rgb(0, 134, 136);
+    color: white;
+}
+
+.dropdownItem:active {
+    background-color: rgb(0, 134, 136);
+    color: white;
+}
+
+.dropdown.open .dropbtn {
+    background-color: rgb(0, 134, 136); 
+    color: white;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+
 nav li.dropdown:hover ul.dropdown-content { 
-    display: flex;
+    display: inline-block;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
     top: 100%;
-    left: -50%;
-    padding: 10px;
-    width: max-content;
+    right: 0.1%;
+    width: 8.05vw;
 
 }
 
 nav li.dropdown:hover ul.dropdown-content li {
-    margin-bottom: 10px;
+    
+    display: block;
 }
   
 a {
@@ -112,3 +197,64 @@ a {
 a:hover {
     color: #000; 
 }
+
+/* The switch container */
+.switch-container {
+    display: flex; /* Arrange elements horizontally */
+    align-items: center; /* Align labels vertically */
+    margin-right: 10px; /* Optional spacing between switches */
+  }
+  
+  /* The switch - the box around the slider */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+    border-radius: 20px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    border-radius: 20px;
+    background-color: white;
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+  }
+  
+  input:checked + .slider {
+    background-color: darkturquoise;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px darkturquoise;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }

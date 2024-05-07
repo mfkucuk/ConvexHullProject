@@ -17,8 +17,18 @@ export function drawConvexHull(ctx, convexHull, S) {
         return;
     }
 
-    ctx.fillStyle = 'red';
-    ctx.strokeStyle = 'red';
+    ctx.fillStyle = "#037249";
+    ctx.strokeStyle = '#037249';
+
+    for (const point of convexHull.points) {
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 3, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+    }
+
+    ctx.fillStyle = "#04AA6D";
+    ctx.strokeStyle = '#04AA6D';
 
     for (let i = 0; i < convexHull.points.length - 1; i++) {
         ctx.beginPath();
