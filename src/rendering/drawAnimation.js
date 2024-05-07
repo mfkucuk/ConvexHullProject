@@ -47,8 +47,8 @@ export function drawJarvisAnimation(ctx, anim, S, tryPoint) {
         ctx.stroke();
     }
 
-    ctx.fillStyle = 'green';
-    ctx.strokeStyle = 'green';
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'red';
     
     if (typeof tryPoint != 'undefined') {
         ctx.moveTo(anim[anim.length - 2].x, anim[anim.length - 2].y);

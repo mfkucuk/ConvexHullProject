@@ -23,7 +23,6 @@ const jarvisButton = document.getElementById('jarvis');
 const quickButton = document.getElementById('quick');
 const mergeButton = document.getElementById('merge');
 
-const currentAlgorithmText = document.getElementById('currentAlgorithm');
 const animationCheckbox = document.getElementById('animation');
 const runButton = document.getElementById('runButton');
 const clearButton = document.getElementById('clearButton');
@@ -67,8 +66,8 @@ async function main() {
         dropdownButton.parentElement.classList.remove('open');
     });
 
-    grahamButton.addEventListener('click', async () => {
-        currentAlgorithmText.innerText = 'Graham\'s Scan';
+    grahamButton.addEventListener('click', () => {
+        runButton.innerText = 'Run Graham\'s Scan';
 
         currentAlgorithm = GrahamScan;
     });
@@ -82,8 +81,8 @@ async function main() {
         dropdownButton.parentElement.classList.remove('open');
     });
 
-    jarvisButton.addEventListener('click', async () => {
-        currentAlgorithmText.innerText = 'Jarvis\'s March';
+    jarvisButton.addEventListener('click', () => {
+        runButton.innerText = 'Run Jarvis\'s March';
 
         currentAlgorithm = JarvisMarch;
     });
@@ -96,8 +95,8 @@ async function main() {
         dropdownButton.parentElement.classList.remove('open');
     });
 
-    quickButton.addEventListener('click', async () => {
-        currentAlgorithmText.innerText = 'QuickHull';
+    quickButton.addEventListener('click', () => {
+        runButton.innerText = 'Run QuickHull';
 
         currentAlgorithm = QuickHull;
     });
@@ -110,8 +109,8 @@ async function main() {
         dropdownButton.parentElement.classList.remove('open');
     });
 
-    mergeButton.addEventListener('click', async () => {
-        currentAlgorithmText.innerText = 'MergeHull';
+    mergeButton.addEventListener('click', () => {
+        runButton.innerText = 'Run MergeHull';
 
         currentAlgorithm = MergeHull;        
     });
