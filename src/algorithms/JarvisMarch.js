@@ -74,7 +74,7 @@ export class JarvisMarch {
                 if (globals.isAnimationEnabled) {
                     drawJarvisAnimation(globals.ctx, animationPoints, S, point);
 
-                    await sleep(400);
+                    await sleep(400 * globals.animationSpeed);
                 }
             }
 
@@ -114,7 +114,7 @@ export class JarvisMarch {
                 if (globals.isAnimationEnabled) {
                     drawJarvisAnimation(globals.ctx, animationPoints, S, point);
 
-                    await sleep(400);
+                    await sleep(400 * globals.animationSpeed);
                 }
 
             }

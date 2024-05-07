@@ -9,6 +9,7 @@ import { MergeHull } from "./algorithms/MergeHull.js";
 import { clearCanvas } from "./rendering/clearCanvas.js";
 
 let isAnimationEnabled = false;
+let animationSpeed = 1;
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -31,12 +32,13 @@ const resetButton = document.getElementById('resetButton');
 const pointCount = document.getElementById('pointCount');
 const pointCountOnHull = document.getElementById('pointCountOnHull');
 
+const zoomSlider = document.getElementById('zoomSlider');
+
 // ENTRY POINT //
 async function main() {
     console.log('program start');
 
     let currentAlgorithm = GrahamScan;
-
     const S = [];
 
     // EVENTS //
@@ -145,11 +147,19 @@ async function main() {
         clearCanvas(ctx);
         drawPoints(ctx, S);
     });
+
+    zoomSlider.addEventListener('input', () => {
+        const zoomLevel = zoomSlider.value;
+        const zoomOptions = [0.25, 0.5, 1, 2, 4]; 
+        globals.animationSpeed = 1 / zoomOptions[zoomLevel];
+    });
+
 }
 
 export const globals = {
     isAnimationEnabled: isAnimationEnabled,
     ctx: ctx,
+    animationSpeed: animationSpeed,
 };
 
 window.onload = main;

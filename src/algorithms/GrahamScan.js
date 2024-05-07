@@ -54,7 +54,7 @@ export class GrahamScan {
                 animationPoints.push(sortedS[i]);
                 drawGrahamAnimation(globals.ctx, animationPoints, S);
     
-                await sleep(1000);
+                await sleep(1000 * globals.animationSpeed);
             }
 
             while (orientation(sortedS[i - 2], sortedS[i - 1], sortedS[i]) > 0) {
@@ -69,7 +69,7 @@ export class GrahamScan {
 
                     drawGrahamAnimation(globals.ctx, animationPoints, S);
 
-                    await sleep(1000);
+                    await sleep(1000 * globals.animationSpeed);
                 }
             }
         }

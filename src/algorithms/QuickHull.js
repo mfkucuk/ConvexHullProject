@@ -69,7 +69,7 @@ export class QuickHull {
             this.#animationPoints.push([line[0], line[1]]);
             drawQuickAnimation(globals.ctx, this.#animationPoints, this.#S);
             
-            await sleep(800);
+            await sleep(800 * globals.animationSpeed);
             
             this.#animationPoints.push([line[0], distal.max]);
             this.#animationPoints.push([distal.max, line[1]]);
@@ -88,7 +88,7 @@ export class QuickHull {
 
             drawQuickAnimation(globals.ctx, this.#animationPoints, this.#S);
             
-            await sleep(800);
+            await sleep(800 * globals.animationSpeed);
         }
         
         await this.#addSegments([line[0], distal.max], distal.points, convexHull);

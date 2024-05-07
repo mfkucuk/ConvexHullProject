@@ -11,7 +11,7 @@
         <header id="navbar">
             <nav>
                 <ul>
-                    <li style="margin-right: 80px;"><h1>Convex Hull</h1></li>
+                    <li style="margin-right: 40px;"><h1>Convex Hull</h1></li>
                     <li class="dropdown">
                         <button class="dropbtn" id="dropbtn">Select Algorithm ▼</button>
                         <ul class="dropdown-content"> 
@@ -24,14 +24,26 @@
                     <li><button class="runButton" id="runButton">Run Graham's Scan</button></li>
                     <li><a class="btn2" id="clearButton" href="#">Clear Points</a></li>
                     <li><a class="btn2" id="resetButton" href="#">Reset Hull</a></li>
-                    <li style="font-weight: bold; text-align: center; margin-right: 80px">Points: <p id="pointCount" >0</p></li>
-                    <li style="font-weight: bold; text-align: center; margin-right: 80px">Points on Hull: <p id="pointCountOnHull">0</p></li>
+                    <li style="font-weight: bold; text-align: center; margin-right: 40px">Points: <p id="pointCount" >0</p></li>
+                    <li style="font-weight: bold; text-align: center; margin-right: 40px">Points on Hull: <p id="pointCountOnHull">0</p></li>
                     <li style="font-weight: bold; text-align: center; margin-right: 15px">Instant</li>
                     <label class="switch">
                         <input type="checkbox" id="animation">
                         <span class="slider"></span>\
                     </label>
-                    <li style="font-weight: bold; text-align: center; margin-left: 15px" >Animated</li>
+                    <li style="font-weight: bold; text-align: center; margin-left: 15px; margin-right:40px;" >Animated</li>
+                    <div class="zoom-container">
+                        <p style="font-weight: bold; text-align: center;">Animation Speed</p> 
+                        <input type="range" min="0" max="4" value="2" class="zoom-slider" id="zoomSlider">
+                        <div class="zoom-track"></div>
+                        <div class="zoom-marks">
+                          <span class="zoom-mark">0.25x</span>
+                          <span class="zoom-mark">0.5x</span>
+                          <span class="zoom-mark">1x</span>
+                          <span class="zoom-mark">2x</span>
+                          <span class="zoom-mark">4x</span>
+                        </div>
+                    </div>
                 </ul>
             </nav>
         </header>
