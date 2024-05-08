@@ -360,6 +360,7 @@ a:hover {
   
   .info-card {
     position: absolute;
+    cursor: initial;
     top: 0%; /* Positions the card below the button initially */
     left: 55%; /* Centers the card horizontally */
     transform: translateX(-50%); /* Adjust positioning as needed */
@@ -374,6 +375,7 @@ a:hover {
   
   .info-container:hover .info-card {
     opacity: 1; /* Reveals the card on hover */
+    cursor: none;
     z-index: 2;
   }
 
@@ -433,4 +435,30 @@ a:hover {
     cursor: pointer;
     font-size: 15px;
     margin-bottom: 10px; /* Add spacing between buttons */
+  }
+
+  .timer-container {
+    position: fixed;
+    top: 70%;
+    right: 2%; 
+    text-align: end;
+    width: 8vw;
+    z-index: 15;
+    cursor: none;
+  }
+  
+  #countdown {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: red;
+
+  }
+  
+  #countdown span {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 15px;
+    color: red;
   }

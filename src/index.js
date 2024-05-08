@@ -46,6 +46,14 @@ const btn10kg = document.getElementById('10kg');
 const btn100kg = document.getElementById('100kg');
 const btn1mg = document.getElementById('1mg');
 
+let seconds = 0;
+let minutes = 0;
+let intervalId = null;
+let isTimerRunning = false; // Flag to track timer state
+
+const minutesEl = document.getElementById("minutes");
+const secondsEl = document.getElementById("seconds");
+
 // ENTRY POINT //
 async function main() {
     console.log('program start');
@@ -133,6 +141,12 @@ async function main() {
     });
 
     runButton.addEventListener('click', async () => {
+        seconds = 0;
+        minutes = 0;
+        minutesEl.textContent = "00";
+        secondsEl.textContent = "00";
+        startTimer();
+        
         pointCountOnHull.innerText = '0';
         
         let convexHull = await currentAlgorithm.construct(S);
@@ -140,6 +154,8 @@ async function main() {
         drawConvexHull(ctx, convexHull, S);
 
         pointCountOnHull.innerText = `${convexHull.points.length}`;
+
+        stopTimer();
     });
 
     clearButton.addEventListener('click', () => {
@@ -233,6 +249,33 @@ async function main() {
     });
 
 
+    const updateTime = () => {
+        seconds++;
+      
+        if (seconds >= 60) {
+          seconds = 0;
+          minutes++;
+        }
+      
+        minutesEl.textContent = minutes.toString().padStart(2, "0");
+        secondsEl.textContent = seconds.toString().padStart(2, "0");
+        console.log("Timer updated:", minutes, ":", seconds); // Add for debugging
+      };
+      
+      const startTimer = () => {
+        if (!isTimerRunning) {
+          intervalId = setInterval(updateTime, 100); // Update every 1/10th of a second
+          isTimerRunning = true;
+        }
+      };
+      
+      const stopTimer = () => {
+        if (intervalId !== null) {
+          clearInterval(intervalId);
+          intervalId = null;
+          isTimerRunning = false;
+        }
+    }
 }
 
 export const globals = {
