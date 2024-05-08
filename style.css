@@ -19,7 +19,8 @@ h1 {
     padding-top: 2vh; 
     padding-bottom: 2vh; 
     padding-left: 1vw; 
-    padding-right: 1vw; 
+    padding-right: 1vw;
+    width: 10vw; 
     border-radius: 6px;
     background-color: #04AA6D;
     color: white;
