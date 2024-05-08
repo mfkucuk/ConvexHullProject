@@ -87,19 +87,64 @@ export function drawQuickAnimation(ctx, anim, S) {
  * @param {CanvasRenderingContext2D} ctx 
  * @param {ConvexHull} leftHull 
  * @param {ConvexHull} rightHull 
+ * @param {object[]} S 
  * @param {object[]} upperTangent 
  * @param {object[]} lowerTangent 
- * @param {object[]} S 
  */
-export function drawMergeAnimation(ctx, leftHull, rightHull, upperTangent, lowerTangent, S) {
+export function drawMergeAnimation(ctx, leftHull, rightHull, S, upperTangent, lowerTangent) {
 
     clearCanvas(ctx);
 
     drawPoints(ctx, S);
 
     // draw the left and right hulls
-    drawConvexHull(ctx, leftHull, S);
-    drawConvexHull(ctx, rightHull, S);
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'red';
 
-    
+    for (let i = 0; i < leftHull.points.length - 1; i++) {
+        ctx.beginPath();
+        ctx.moveTo(leftHull.points[i].x, leftHull.points[i].y);
+        ctx.lineTo(leftHull.points[i+1].x, leftHull.points[i+1].y);
+        ctx.stroke();
+    }
+
+    // connect last point to the first point
+    ctx.moveTo(leftHull.points[ leftHull.points.length - 1 ].x, leftHull.points[ leftHull.points.length - 1 ].y);
+    ctx.lineTo(leftHull.points[0].x, leftHull.points[0].y);
+    ctx.stroke();
+
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'red';
+
+    for (let i = 0; i < rightHull.points.length - 1; i++) {
+        ctx.beginPath();
+        ctx.moveTo(rightHull.points[i].x, rightHull.points[i].y);
+        ctx.lineTo(rightHull.points[i+1].x, rightHull.points[i+1].y);
+        ctx.stroke();
+    }
+
+    // connect last point to the first point
+    ctx.moveTo(rightHull.points[ rightHull.points.length - 1 ].x, rightHull.points[ rightHull.points.length - 1 ].y);
+    ctx.lineTo(rightHull.points[0].x, rightHull.points[0].y);
+    ctx.stroke();
+
+    ctx.fillStyle = 'blue';
+    ctx.strokeStyle = 'blue';
+
+    if (typeof upperTangent != 'undefined') {
+        ctx.beginPath();
+        ctx.moveTo(upperTangent[0].x, upperTangent[0].y);
+        ctx.lineTo(upperTangent[1].x, upperTangent[1].y);
+        ctx.stroke();
+    }
+
+    ctx.fillStyle = 'blue';
+    ctx.strokeStyle = 'blue';
+
+    if (typeof lowerTangent != 'undefined') {
+        ctx.beginPath();
+        ctx.moveTo(lowerTangent[0].x, lowerTangent[0].y);
+        ctx.lineTo(lowerTangent[1].x, lowerTangent[1].y);
+        ctx.stroke();
+    }
 }

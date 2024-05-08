@@ -143,6 +143,10 @@ async function main() {
         
         pointCountOnHull.innerText = '0';
         
+        if (currentAlgorithm instanceof MergeHull) {
+            currentAlgorithm.reset();
+        }
+
         let convexHull = await currentAlgorithm.construct(S);
 
         drawConvexHull(ctx, convexHull, S);

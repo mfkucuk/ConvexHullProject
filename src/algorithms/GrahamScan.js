@@ -14,8 +14,7 @@ export class GrahamScan {
      * 
      * @param {Object[]} S - List of points to generate the convex hull. 
      */
-    static async construct(S) {
-
+    static async construct(S, staticS) {
         if (S.length < 2) {
             return new ConvexHull();
         }
@@ -48,6 +47,10 @@ export class GrahamScan {
         const sortedS = mergeSort(S, pivot);
 
         const animationPoints = [sortedS[0], sortedS[1]];
+
+        if (typeof staticS != 'undefined') {
+            S = staticS;
+        }
         
         for (let i = 2; i < sortedS.length; i++) {
             if (globals.isAnimationEnabled) {
