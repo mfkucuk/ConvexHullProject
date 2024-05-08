@@ -209,7 +209,7 @@ async function main() {
         drawPoints(ctx, S);
     });
 
-    btn1k.addEventListener('click', () => {
+    btn1kg.addEventListener('click', () => {
         
         gaussGenerator(S, 1000);
         pointCount.innerText = `${S.length}`;
