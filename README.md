@@ -5,3 +5,7 @@ The project can run with local hosting. You can use:
 - **http-server**
 
 Navigate to the project root folder. Then run either `live-server .` or `http-server .` to start the project.
+
+OR,
+
+The project is being is hosted using **gh-pages**, and you can access it [here](https://mfkucuk.github.io/ConvexHullProject/#).
