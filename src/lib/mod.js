@@ -3,5 +3,5 @@ export function mod(number, divisor) {
         return number % divisor;
     }
 
-    return number + divisor;
+    return (number % divisor) + divisor;
 }

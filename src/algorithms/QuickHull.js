@@ -102,22 +102,21 @@ export class QuickHull {
         let distance = 0;
         let max_distance = 0;
     
-        for (const point of points) { 
+        for (const point of points) {
             distance = this.#distanceFromLine(point, line);
         
             if (distance > 0) {
                 outer_points.push({ x: point.x, y: point.y });
+
+                if (distance > max_distance) {
+                    distal_point.x = point.x;
+                    distal_point.y = point.y;
+                    max_distance = distance;
+                }
             } 
             else {
                 continue; //short circuit
             } 
-    
-            if (distance > max_distance) {
-                distal_point.x = point.x;
-                distal_point.y = point.y;
-                max_distance = distance;
-            }
-    
         }
     
         return { points: outer_points, max: distal_point };
@@ -125,11 +124,11 @@ export class QuickHull {
 
     static #distanceFromLine(point, line) {
 
-        const A = line[1].y - line[0].y;
-        const B = line[0].x - line[1].x;
-        const C = A * line[0].x + B * line[0].y; 
+        const A = Math.floor(line[1].y) - Math.floor(line[0].y);
+        const B = Math.floor(line[0].x) - Math.floor(line[1].x);
+        const C = A * Math.floor(line[0].x) + B * Math.floor(line[0].y); 
     
-        const d = (A * point.x + B * point.y - C) / (A**2 + B**2);
+        const d = (A * Math.floor(point.x) + B * Math.floor(point.y) - C) / (A**2 + B**2);
     
         return d;
     }

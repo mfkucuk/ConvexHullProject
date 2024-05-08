@@ -16,6 +16,7 @@ let animationSpeed = 1;
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -56,7 +57,6 @@ async function main() {
 
     // EVENTS //
     canvas.addEventListener('click', async (event) => {
-
         const x = event.x - parseInt(canvas.getBoundingClientRect().left);
         const y = event.y - parseInt(canvas.getBoundingClientRect().top);
 
