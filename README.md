@@ -1,4 +1,4 @@
-### CS478 - Convex Hull Construction Algorithms and Comparing Their Performance
+# CS478 - Convex Hull Construction Algorithms and Comparing Their Performance
 ## How to run
 The project can run with local hosting. You can use:
 - **live-server**
