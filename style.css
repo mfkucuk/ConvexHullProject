@@ -390,7 +390,7 @@ a:hover {
     flex-direction: column; /* Stack elements on top of each other */
     position: fixed;
     right: 1.5%;
-    top: 35%;
+    top: 45%;
   }
   
   .content {
@@ -411,6 +411,8 @@ a:hover {
     display: flex;
     flex-direction: column; /* Stack buttons vertically */
     align-content: end;
+    z-index: 5;
+
   }
   
   .generate-button {
