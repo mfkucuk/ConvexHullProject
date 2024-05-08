@@ -1,5 +1,4 @@
 export function gaussGenerator(S, number, meanX = 905, stdDevX = 1790, meanY = 420, stdDevY = 840) {
-    // Function to generate a single standard normal random variate using Box-Muller transform
     function randomGaussian() {
       let u = 0, v = 0;
       while (u === 0) u = Math.random(); // While u is 0, regenerate
@@ -11,7 +10,6 @@ export function gaussGenerator(S, number, meanX = 905, stdDevX = 1790, meanY = 4
     }
   
     for (let i = 0; i < number; i++) {
-      // Rejection sampling to ensure coordinates are within limits
       let x, y;
       do {
         x = meanX + stdDevX * randomGaussian();

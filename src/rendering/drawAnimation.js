@@ -1,6 +1,5 @@
 import { ConvexHull } from "../ConvexHull.js";
 import { clearCanvas } from "./clearCanvas.js";
-import { drawConvexHull } from "./drawConvexHull.js";
 import { drawPoints } from "./drawPoints.js";
 
 /**

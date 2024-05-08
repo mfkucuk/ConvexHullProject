@@ -1,8 +1,6 @@
-import { ConvexHull } from "./ConvexHull.js";
 import { GrahamScan } from "./algorithms/GrahamScan.js";
 import { JarvisMarch } from "./algorithms/JarvisMarch.js";
 import { QuickHull } from "./algorithms/QuickHull.js";
-import { mergeSort } from "./lib/mergeSort.js";
 import { drawConvexHull } from "./rendering/drawConvexHull.js";
 import { drawPoints } from "./rendering/drawPoints.js";
 import { MergeHull } from "./algorithms/MergeHull.js";
