@@ -143,7 +143,7 @@ async function main() {
         
         pointCountOnHull.innerText = '0';
         
-        if (currentAlgorithm instanceof MergeHull) {
+        if (currentAlgorithm == MergeHull) {
             currentAlgorithm.reset();
         }
 
@@ -156,8 +156,6 @@ async function main() {
         const endTime = Date.now();
 
         const elapsedTimeMs = endTime - startTime;
-
-        console.log((elapsedTimeMs).toFixed(2));        
 
         secondsEl.innerText = `${((elapsedTimeMs / 1000) % 60).toFixed(2)}`;
         minutesEl.innerText = `${parseInt(elapsedTimeMs / 60000)}`;

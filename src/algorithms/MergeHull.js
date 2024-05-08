@@ -24,7 +24,7 @@ export class MergeHull {
 
         if (this.#S.length == 0) {
             for (let i = 0; i < S.length; i++) {
-                this.#S[i] = S[i];
+                this.#S.push(S[i]);
             }
         }
         
