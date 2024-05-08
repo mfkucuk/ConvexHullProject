@@ -326,7 +326,7 @@ a:hover {
     position: fixed;
     display: inline-block; /* Ensures elements stack horizontally */
     z-index: 2;
-    bottom: 5%;
+    bottom: 3%;
     right: 0%;
     width: 15vw;
     height: 22vh;
@@ -348,8 +348,8 @@ a:hover {
     z-index: 2;
     font-family: FontAwesome, sans-serif; /* Include Font Awesome font */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-    bottom: 5%;
-    right: 3%;
+    bottom: 3%;
+    right: 1.5%;
   }
   
   .info-button:hover {
@@ -361,7 +361,7 @@ a:hover {
   .info-card {
     position: absolute;
     top: 0%; /* Positions the card below the button initially */
-    left: 50%; /* Centers the card horizontally */
+    left: 55%; /* Centers the card horizontally */
     transform: translateX(-50%); /* Adjust positioning as needed */
     padding: 10px;
     background-color: #ddd;
@@ -383,6 +383,8 @@ a:hover {
     position: fixed;
     right: 1.5%;
     top: 10%;
+    z-index: 5;
+
   }
 
   .container2 {
@@ -391,6 +393,8 @@ a:hover {
     position: fixed;
     right: 1.5%;
     top: 45%;
+    z-index: 5;
+
   }
   
   .content {
@@ -411,13 +415,11 @@ a:hover {
     display: flex;
     flex-direction: column; /* Stack buttons vertically */
     align-content: end;
-    z-index: 5;
 
   }
   
   .generate-button {
     margin-left: 70%;
-    z-index: 5;
     border: 1px;
     padding-top: 15px; 
     padding-bottom: 15px; 
