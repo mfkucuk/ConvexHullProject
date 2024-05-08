@@ -14,10 +14,10 @@ export function gaussGenerator(S, number, meanX = 905, stdDevX = 1790, meanY = 4
       // Rejection sampling to ensure coordinates are within limits
       let x, y;
       do {
-        x = Math.floor(meanX + stdDevX * randomGaussian());
+        x = meanX + stdDevX * randomGaussian();
       } while (x < 0 || x > 1800);
       do {
-        y = Math.floor(meanY + stdDevY * randomGaussian());
+        y = meanY + stdDevY * randomGaussian();
       } while (y < 80 || y > 920);
   
       S.push({x, y});

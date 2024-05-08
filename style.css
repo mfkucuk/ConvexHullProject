@@ -383,7 +383,6 @@ a:hover {
     position: fixed;
     right: 1.5%;
     top: 10%;
-    z-index: 4;
   }
 
   .container2 {
@@ -392,7 +391,6 @@ a:hover {
     position: fixed;
     right: 1.5%;
     top: 35%;
-    z-index: 4;
   }
   
   .content {
@@ -417,6 +415,7 @@ a:hover {
   
   .generate-button {
     margin-left: 70%;
+    z-index: 5;
     border: 1px;
     padding-top: 15px; 
     padding-bottom: 15px; 
