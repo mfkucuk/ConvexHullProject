@@ -46,11 +46,6 @@ const btn10kg = document.getElementById('10kg');
 const btn100kg = document.getElementById('100kg');
 const btn1mg = document.getElementById('1mg');
 
-let seconds = 0;
-let minutes = 0;
-let intervalId = null;
-let isTimerRunning = false; // Flag to track timer state
-
 const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 
@@ -141,11 +136,10 @@ async function main() {
     });
 
     runButton.addEventListener('click', async () => {
-        seconds = 0;
-        minutes = 0;
-        minutesEl.textContent = "00";
-        secondsEl.textContent = "00";
-        startTimer();
+        minutesEl.innerText = "00";
+        secondsEl.innerText = "00";
+
+        const startTime = Date.now(); 
         
         pointCountOnHull.innerText = '0';
         
@@ -155,7 +149,14 @@ async function main() {
 
         pointCountOnHull.innerText = `${convexHull.points.length}`;
 
-        stopTimer();
+        const endTime = Date.now();
+
+        const elapsedTimeMs = endTime - startTime;
+
+        console.log((elapsedTimeMs).toFixed(2));        
+
+        secondsEl.innerText = `${((elapsedTimeMs / 1000) % 60).toFixed(2)}`;
+        minutesEl.innerText = `${parseInt(elapsedTimeMs / 60000)}`;
     });
 
     clearButton.addEventListener('click', () => {
@@ -247,35 +248,6 @@ async function main() {
         clearCanvas(ctx);
         drawPoints(ctx, S);
     });
-
-
-    const updateTime = () => {
-        seconds++;
-      
-        if (seconds >= 60) {
-          seconds = 0;
-          minutes++;
-        }
-      
-        minutesEl.textContent = minutes.toString().padStart(2, "0");
-        secondsEl.textContent = seconds.toString().padStart(2, "0");
-        console.log("Timer updated:", minutes, ":", seconds); // Add for debugging
-      };
-      
-      const startTimer = () => {
-        if (!isTimerRunning) {
-          intervalId = setInterval(updateTime, 100); // Update every 1/10th of a second
-          isTimerRunning = true;
-        }
-      };
-      
-      const stopTimer = () => {
-        if (intervalId !== null) {
-          clearInterval(intervalId);
-          intervalId = null;
-          isTimerRunning = false;
-        }
-    }
 }
 
 export const globals = {

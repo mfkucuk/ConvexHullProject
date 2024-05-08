@@ -1,4 +1,6 @@
+import { ConvexHull } from "../ConvexHull.js";
 import { clearCanvas } from "./clearCanvas.js";
+import { drawConvexHull } from "./drawConvexHull.js";
 import { drawPoints } from "./drawPoints.js";
 
 /**
@@ -78,4 +80,26 @@ export function drawQuickAnimation(ctx, anim, S) {
         ctx.lineTo(anim[i][1].x, anim[i][1].y);
         ctx.stroke();
     }
+}
+
+/**
+ * 
+ * @param {CanvasRenderingContext2D} ctx 
+ * @param {ConvexHull} leftHull 
+ * @param {ConvexHull} rightHull 
+ * @param {object[]} upperTangent 
+ * @param {object[]} lowerTangent 
+ * @param {object[]} S 
+ */
+export function drawMergeAnimation(ctx, leftHull, rightHull, upperTangent, lowerTangent, S) {
+
+    clearCanvas(ctx);
+
+    drawPoints(ctx, S);
+
+    // draw the left and right hulls
+    drawConvexHull(ctx, leftHull, S);
+    drawConvexHull(ctx, rightHull, S);
+
+    
 }

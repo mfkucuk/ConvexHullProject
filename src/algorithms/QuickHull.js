@@ -123,14 +123,9 @@ export class QuickHull {
     }
 
     static #distanceFromLine(point, line) {
-
-        const A = Math.floor(line[1].y) - Math.floor(line[0].y);
-        const B = Math.floor(line[0].x) - Math.floor(line[1].x);
-        const C = A * Math.floor(line[0].x) + B * Math.floor(line[0].y); 
-    
-        const d = (A * Math.floor(point.x) + B * Math.floor(point.y) - C) / (A**2 + B**2);
-    
-        return d;
+        const vY = line[1].y - line[0].y;
+        const vX = line[0].x - line[1].x;
+        return (vX * (point.y - line[0].y) + vY * (point.x - line[0].x))
     }
 
 }
