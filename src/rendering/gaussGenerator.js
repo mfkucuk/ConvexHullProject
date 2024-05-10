@@ -1,23 +1,26 @@
-export function gaussGenerator(S, number, meanX = 905, stdDevX = 1790, meanY = 420, stdDevY = 840) {
-    function randomGaussian() {
-      let u = 0, v = 0;
-      while (u === 0) u = Math.random(); // While u is 0, regenerate
-      while (v === 0) v = Math.random();
-      const s = u + v - 1;
-      const mul = Math.sqrt( s / -2.0 );
-      const x = u === 0 ? mul : mul * Math.cos(Math.PI * v);
+export function gaussGenerator(S, number, meanX = 895, stdDevX = 400, meanY = 420, stdDevY = 180) {
+  function randomGaussian() {
+      let u = 0, v = 0, s;
+      do {
+          u = Math.random() * 2 - 1;
+          v = Math.random() * 2 - 1;
+          s = u * u + v * v;
+      } while (s >= 1 || s === 0);
+
+      const mul = Math.sqrt(-2.0 * Math.log(s) / s);
+      const x = u * mul;
       return x;
-    }
-  
-    for (let i = 0; i < number; i++) {
+  }
+
+  for (let i = 0; i < number; i++) {
       let x, y;
       do {
         x = meanX + stdDevX * randomGaussian();
-      } while (x < 0 || x > 1800);
+      } while (x < 10 || x > 1790)
       do {
         y = meanY + stdDevY * randomGaussian();
-      } while (y < 80 || y > 920);
-  
+      } while ( y < 80 || y > 920)
+
       S.push({x, y});
-    }
   }
+}

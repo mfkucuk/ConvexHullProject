@@ -30,6 +30,22 @@ h1 {
     margin-left: 40px;
 }
 
+.runButton:disabled { 
+    background-color: #939393;
+}
+
+.runButton:disabled:hover {
+    background-color: #939393;
+}
+
+.btn2:disabled { 
+  background-color: #939393;
+}
+
+.btn2:disabled:hover {
+  background-color: #939393;
+}
+
 .runButton:hover {
     padding-top: 2vh; 
     padding-bottom: 2vh; 
@@ -329,7 +345,7 @@ a:hover {
     z-index: 2;
     bottom: 3%;
     right: 0%;
-    width: 15vw;
+    width: 9vw;
     height: 22vh;
   }
   
@@ -366,6 +382,7 @@ a:hover {
     left: 55%; /* Centers the card horizontally */
     transform: translateX(-50%); /* Adjust positioning as needed */
     padding: 10px;
+    width: 6vw;
     background-color: #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
