@@ -9,6 +9,7 @@ import { randomGenerator } from "./rendering/randomGenerator.js";
 import { gaussGenerator } from "./rendering/gaussGenerator.js";
 
 let isAnimationEnabled = false;
+let isAnimationPlaying = false;
 let animationSpeed = 1;
 
 const canvas = document.getElementById('canvas');
@@ -56,20 +57,22 @@ async function main() {
 
     // EVENTS //
     canvas.addEventListener('click', async (event) => {
-        const x = event.x - parseInt(canvas.getBoundingClientRect().left);
-        const y = event.y - parseInt(canvas.getBoundingClientRect().top);
-
-        for (const point of S) {
-            if (point.x == x && point.y == y) {
-                return;
+        if (!isAnimationPlaying) {
+            const x = event.x - parseInt(canvas.getBoundingClientRect().left);
+            const y = event.y - parseInt(canvas.getBoundingClientRect().top);
+    
+            for (const point of S) {
+                if (point.x == x && point.y == y) {
+                    return;
+                }
             }
+            
+            S.push({ x: x, y: y });
+    
+            pointCount.innerText = `${S.length}`;
+            
+            drawPoints(ctx, S);
         }
-        
-        S.push({ x: x, y: y });
-
-        pointCount.innerText = `${S.length}`;
-        
-        drawPoints(ctx, S);
     });
 
     grahamButton.addEventListener('mouseover', () => {
@@ -137,6 +140,15 @@ async function main() {
         minutesEl.innerText = "00";
         secondsEl.innerText = "00";
 
+        if (globals.isAnimationEnabled) {
+            runButton.disabled = true;
+            clearButton.disabled = true;
+            resetButton.disabled = true;
+            isAnimationPlaying = true;
+
+            console.log(clearButton.disabled);
+        }
+
         const startTime = Date.now(); 
         
         pointCountOnHull.innerText = '0';
@@ -157,6 +169,11 @@ async function main() {
 
         secondsEl.innerText = `${((elapsedTimeMs / 1000) % 60).toFixed(2)}`;
         minutesEl.innerText = `${parseInt(elapsedTimeMs / 60000)}`;
+
+        runButton.disabled = false;
+        clearButton.disabled = false;
+        resetButton.disabled = false;
+        isAnimationPlaying = false;
     });
 
     clearButton.addEventListener('click', () => {

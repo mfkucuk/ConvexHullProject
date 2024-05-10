@@ -30,6 +30,22 @@ h1 {
     margin-left: 40px;
 }
 
+.runButton:disabled { 
+    background-color: #939393;
+}
+
+.runButton:disabled:hover {
+    background-color: #939393;
+}
+
+.btn2:disabled { 
+  background-color: #939393;
+}
+
+.btn2:disabled:hover {
+  background-color: #939393;
+}
+
 .runButton:hover {
     padding-top: 2vh; 
     padding-bottom: 2vh; 
