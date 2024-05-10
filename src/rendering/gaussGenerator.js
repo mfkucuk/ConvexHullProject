@@ -14,8 +14,12 @@ export function gaussGenerator(S, number, meanX = 895, stdDevX = 400, meanY = 42
 
   for (let i = 0; i < number; i++) {
       let x, y;
-      x = meanX + stdDevX * randomGaussian();
-      y = meanY + stdDevY * randomGaussian();
+      do {
+        x = meanX + stdDevX * randomGaussian();
+      } while (x < 10 || x > 1790)
+      do {
+        y = meanY + stdDevY * randomGaussian();
+      } while ( y < 80 || y > 920)
 
       S.push({x, y});
   }
