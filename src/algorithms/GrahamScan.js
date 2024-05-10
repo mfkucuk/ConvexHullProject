@@ -83,10 +83,6 @@ export class GrahamScan {
             convexHull.addPoint(point);
         }
 
-        if (globals.isAnimationEnabled) {
-            clearCanvas(globals.ctx);
-        }
-
         return convexHull;
     }
 
