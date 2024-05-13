@@ -235,7 +235,7 @@ async function main() {
 
     btn1kg.addEventListener('click', () => {
         
-        gaussGenerator(S, 1000);
+        gaussGenerator(S, 1000, window.innerWidth/2, window.innerWidth/9, window.innerHeight/2, window.innerHeight/9);
         pointCount.innerText = `${S.length}`;
         clearCanvas(ctx);
         drawPoints(ctx, S);
@@ -243,7 +243,7 @@ async function main() {
 
     btn10kg.addEventListener('click', () => {
         
-        gaussGenerator(S, 10000);
+        gaussGenerator(S, 10000, window.innerWidth/2, window.innerWidth/9, window.innerHeight/2, window.innerHeight/9);
         pointCount.innerText = `${S.length}`;
         clearCanvas(ctx);
         drawPoints(ctx, S);
@@ -252,7 +252,7 @@ async function main() {
 
     btn100kg.addEventListener('click', () => {
         
-        gaussGenerator(S, 100000);
+        gaussGenerator(S, 100000, window.innerWidth/2, window.innerWidth/9, window.innerHeight/2, window.innerHeight/9);
         pointCount.innerText = `${S.length}`;
         clearCanvas(ctx);
         drawPoints(ctx, S);
@@ -260,7 +260,7 @@ async function main() {
 
     btn1mg.addEventListener('click', () => {
         
-        gaussGenerator(S, 1000000);
+        gaussGenerator(S, 1000000, window.innerWidth/2, window.innerWidth/9, window.innerHeight/2, window.innerHeight/9);
         pointCount.innerText = `${S.length}`;
         clearCanvas(ctx);
         drawPoints(ctx, S);
