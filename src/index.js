@@ -16,7 +16,7 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 
-canvas.width = window.innerWidth - (window.innerHeight / 20);
+canvas.width = window.innerWidth - (window.innerWidth / 20);
 canvas.height = window.innerHeight - (window.innerHeight / 20) ;
 
 const dropdownButton = document.getElementById('dropbtn');
