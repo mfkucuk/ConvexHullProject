@@ -12,6 +12,10 @@ export class ConvexHull {
         return this.#points;
     }
 
+    set points(newPoints) {
+        this.#points = newPoints;
+    }
+
     getPoint(index) {
         let temp = index;
 
