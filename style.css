@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 1.042vw;
 }
   
 h1 {
@@ -21,13 +21,13 @@ h1 {
     padding-left: 1vw; 
     padding-right: 1vw;
     width: 10vw; 
-    border-radius: 6px;
+    border-radius: 0.313vw;
     background-color: #04AA6D;
     color: white;
     border: none;
-    margin-right: 40px;
-    font-size: 16px;
-    margin-left: 40px;
+    margin-right: 2.083vw;
+    font-size: 0.833vw;
+    margin-left: 2.083vw;
 }
 
 .runButton:disabled { 
@@ -51,11 +51,11 @@ h1 {
     padding-bottom: 2vh; 
     padding-left: 1vw; 
     padding-right: 1vw; 
-    border-radius: 6px;
+    border-radius: 0.313vw;
     background-color: #037249;
     color: white;
     border: none;
-    font-size: 16px;
+    font-size: 0.833vw;
 }
 
 #algorithmSelect, #animation {
@@ -64,15 +64,15 @@ h1 {
   
   
 .button {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    padding: 0.26vw 0.52vw;
+    border: 0.052vw solid #ddd;
+    border-radius: 0.313vw;
     cursor: pointer;
 }
 
 header {
     background-color: #f0f0f0; 
-    padding: 20px 20px;
+    padding: 1.042vw 1.042vw;
     display: flex; 
     justify-content: space-evenly; 
     align-items: center;  
@@ -80,7 +80,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 50px;
+    height: 4.63vh;
     z-index: 100;
 }
   
@@ -111,9 +111,9 @@ nav li {
 .dropbtn {
     background-color: darkturquoise;
     color: white;
-    border-radius: 6px;
-    padding: 16px;
-    font-size: 16px;
+    border-radius: 0.313vw;
+    padding: 0.833vw;
+    font-size: 0.833vw;
     border: none;
     width: 10vw;
 
@@ -124,8 +124,8 @@ nav li {
     color: white;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    padding: 16px;
-    font-size: 16px;
+    padding: 0.833vw;
+    font-size: 0.833vw;
     border: none;
 
 }
@@ -133,11 +133,11 @@ nav li {
 .btn2 {
     background-color: red;
     color: white;
-    border-radius: 6px;
-    padding: 16px;
-    font-size: 16px;
+    border-radius: 0.313vw;
+    padding: 0.833vw;
+    font-size: 0.833vw;
     border: none;
-    margin-right: 40px;
+    margin-right: 2.083vw;
     
 }
 
@@ -160,17 +160,18 @@ nav ul.dropdown-content {
     display: none; 
     align-content: center;
     background-color: #f1f1f1;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 0.417vw 0.833vw 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
   
 .dropdownItem {
     background-color: darkturquoise;
-    padding: 10px;
+    padding: 0.521vw;
     padding-left: 0;
     padding-right: 0;
     text-align: center;
     color: white;
+    font-size: 0.833vw;
     width: 10vw;
 
 }
@@ -224,15 +225,15 @@ a:hover {
 .switch-container {
     display: flex; /* Arrange elements horizontally */
     align-items: center; /* Align labels vertically */
-    margin-right: 10px; /* Optional spacing between switches */
+    margin-right: 0.521vw; /* Optional spacing between switches */
   }
   
   /* The switch - the box around the slider */
   .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 3.125vw;
+    height: 1.771vw;
   }
   
   /* Hide default HTML checkbox */
@@ -253,17 +254,17 @@ a:hover {
     background-color: #ccc;
     -webkit-transition: .4s ease-in-out;
     transition: .4s ease-in-out;
-    border-radius: 20px;
+    border-radius: 1.042vw;
   }
   
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    border-radius: 20px;
+    height: 1.354vw;
+    width: 1.354vw;
+    left: 0.208vw;
+    bottom: 0.208vw;
+    border-radius: 1.042vw;
     background-color: white;
     -webkit-transition: .4s ease-in-out;
     transition: .4s ease-in-out;
@@ -274,27 +275,27 @@ a:hover {
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px darkturquoise;
+    box-shadow: 0 0 0.052vw darkturquoise;
   }
   
   input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(1.354vw);
   }
 
 
 .zoom-container {
   position: relative;
-  width: 15vw; /* Adjust width as needed */
-  margin: 10px auto; /* Center the slider horizontally */
+  width: 12vw; /* Adjust width as needed */
+  margin: 0.521vw auto; /* Center the slider horizontally */
 }
 
 .zoom-slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 10px;
+  height: 0.521vw;
   background: #ddd;
-  border-radius: 5px;
+  border-radius: 0.26vw;
   cursor: pointer;
   outline: none;
   z-index: 5;
@@ -304,8 +305,8 @@ a:hover {
 .zoom-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 1.042vw;
+  height: 1.042vw;
   background: #4CAF50;
   border-radius: 50%;
   cursor: pointer;
@@ -317,9 +318,9 @@ a:hover {
   top: 85%;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 0.104vw;
   background: #4CAF50;
-  margin-left: 4px;
+  margin-left: 0.208vw;
   transform: translateY(-50%);
   pointer-events: none;
 }
@@ -336,7 +337,7 @@ a:hover {
 
 .zoom-mark {
   color: #999;
-  font-size: 15px;
+  font-size: 0.781vw;
 }
 
 .info-container {
@@ -345,6 +346,7 @@ a:hover {
     z-index: 2;
     bottom: 3%;
     right: 0%;
+    font-size: 0.833vw;
     width: 9vw;
     height: 22vh;
   }
@@ -352,11 +354,11 @@ a:hover {
   .info-button {
     border: none;
     position: fixed;
-    font-size: 15px;
-    padding-top: 15px; 
-    padding-bottom: 15px; 
-    padding-left: 20px; 
-    padding-right: 20px; 
+    font-size: 0.781vw;
+    padding-top: 0.781vw; 
+    padding-bottom: 0.781vw; 
+    padding-left: 1.042vw; 
+    padding-right: 1.042vw; 
     border-radius: 50%; /* Creates a circular button */
     background-color: #ddd; /* Adjust background color as needed */
     color: #333;
@@ -364,14 +366,14 @@ a:hover {
     transition: background-color 0.2s ease-in-out; /* Add hover effect */
     z-index: 2;
     font-family: FontAwesome, sans-serif; /* Include Font Awesome font */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 0.104vw 0.26vw rgba(0, 0, 0, 0.2); 
     bottom: 3%;
     right: 1.5%;
   }
   
   .info-button:hover {
     background-color: #ddd; /* Adjust hover background color */
-    border-width: 1px;
+    border-width: 0.052vw;
     z-index: 2;
   }
   
@@ -381,11 +383,12 @@ a:hover {
     top: 0%; /* Positions the card below the button initially */
     left: 55%; /* Centers the card horizontally */
     transform: translateX(-50%); /* Adjust positioning as needed */
-    padding: 10px;
+    padding: 0.52vw;
     width: 6vw;
+    font-size: 0.833vw;
     background-color: #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    border-radius: 0.26vw;
+    box-shadow: 0 0.104vw 0.26vw rgba(0, 0, 0, 0.2); /* Add subtle shadow */
     opacity: 0; /* Hides the card initially */
     transition: opacity 0.2s ease-in-out; /* Add hover effect for opacity */
     z-index: 2;
@@ -421,14 +424,14 @@ a:hover {
     display: flex; /* Allow placing buttons and text side-by-side */
     justify-content: space-between; /* Align elements horizontally with space between */
     align-items: flex-start; /* Vertically align content at the top */
-    padding: 20px; /* Add some padding for aesthetics */
+    padding: 1.042vw; /* Add some padding for aesthetics */
   }
   
   h2 {
     margin: 0; /* Remove default margin for better spacing */
-    font-size: 15px;
+    font-size: 0.781vw;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 0.521vw;
   }
   
   .button-container {
@@ -440,19 +443,19 @@ a:hover {
   
   .generate-button {
     margin-left: 70%;
-    border: 1px;
-    padding-top: 15px; 
-    padding-bottom: 15px; 
-    padding-left: 8px; 
-    width: 50px;
-    padding-right: 8px; 
+    border: 0.052vw;
+    padding-top: 0.781vw; 
+    padding-bottom: 0.781vw; 
+    padding-left: 0.417vw; 
+    width: 2.604vw;
+    padding-right: 0.417vw; 
     border-radius: 50%; /* Creates round buttons */
     background-color: #ddd;
     color: #333;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    box-shadow: 0 0.104vw 0.26vw rgba(0, 0, 0, 0.2); /* Add subtle shadow */
     cursor: pointer;
-    font-size: 15px;
-    margin-bottom: 10px; /* Add spacing between buttons */
+    font-size: 0.781vw;
+    margin-bottom: 0.521vw; /* Add spacing between buttons */
   }
 
   .timer-container {
@@ -468,15 +471,15 @@ a:hover {
   #countdown {
     display: flex;
     justify-content: space-between;
-    font-size: 15px;
+    font-size: 0.781vw;
     color: red;
 
   }
   
   #countdown span {
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 15px;
+    padding: 0.26vw;
+    border: 0.052vw solid #ddd;
+    border-radius: 0.26vw;
+    font-size: 0.781vw;
     color: red;
   }

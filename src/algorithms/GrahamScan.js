@@ -1,17 +1,14 @@
 import { ConvexHull } from "../ConvexHull.js";
 import { globals } from "../index.js";
-import { mergeSort } from "../lib/mergeSort.js";
+import { quickSort } from "../lib/quickSort.js";
 import { orientation } from "../lib/orientation.js";
 import { sleep } from "../lib/sleep.js";
 import { clearCanvas } from "../rendering/clearCanvas.js";
 import { drawGrahamAnimation } from "../rendering/drawAnimation.js";
 
 export class GrahamScan {
-
     /**
-     * 
      * Generates a convex hull for a set of given points using Graham's scan algorithm.
-     * 
      * @param {Object[]} S - List of points to generate the convex hull. 
      */
     static async construct(S, staticS) {
@@ -19,71 +16,44 @@ export class GrahamScan {
             return new ConvexHull();
         }
 
-        const pivot = { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER };
-        let pivotIndex = 0;
-        
-        for (const point of S) {
-            if (pivot.y > point.y) {
-                pivot.x = point.x;
-                pivot.y = point.y;
-                pivotIndex = S.indexOf(point);
-            } else if (pivot.y == point.y) {
-                if (pivot.x > point.x) {
-                    pivot.x = point.x;
-                    pivotIndex = S.indexOf(point);
-                }
+        const pivot = S.reduce((acc, point, index) => {
+            if (point.y < acc.y || (point.y === acc.y && point.x < acc.x)) {
+                return { ...point, index };
             }
-        }
+            return acc;
+        }, { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER });
 
-        // swap pivot with the first element
-        let tempPoint = { x: S[0].x, y: S[0].y };
+        // Move pivot to first position
+        [S[0], S[pivot.index]] = [S[pivot.index], S[0]];
 
-        S[0].x = pivot.x;
-        S[0].y = pivot.y;
+        const sortedS = quickSort(S, pivot);
 
-        S[pivotIndex].x = tempPoint.x;
-        S[pivotIndex].y = tempPoint.y;
-
-        const sortedS = mergeSort(S, pivot);
-
-        const animationPoints = [sortedS[0], sortedS[1]];
-
-        if (typeof staticS != 'undefined') {
+        if (typeof staticS !== 'undefined') {
             S = staticS;
         }
-        
+
+        const hull = [sortedS[0], sortedS[1]];
+
         for (let i = 2; i < sortedS.length; i++) {
             if (globals.isAnimationEnabled) {
-                animationPoints.push(sortedS[i]);
-                drawGrahamAnimation(globals.ctx, animationPoints, S);
-    
+                hull.push(sortedS[i]);
+                drawGrahamAnimation(globals.ctx, hull, S);
                 await sleep(1000 * globals.animationSpeed);
             }
 
-            while (orientation(sortedS[i - 2], sortedS[i - 1], sortedS[i]) > 0) {
-                if (!globals.isAnimationEnabled) {
-                    sortedS.splice(i - 1, 1);
-                    i--;
-                }
-                else {
-                    sortedS.splice(i - 1, 1);
-                    animationPoints.splice(i - 1, 1);
-                    i--;
-
-                    drawGrahamAnimation(globals.ctx, animationPoints, S);
-
+            while (hull.length > 1 && orientation(hull[hull.length - 2], hull[hull.length - 1], sortedS[i]) > 0) {
+                hull.pop();
+                if (globals.isAnimationEnabled) {
+                    drawGrahamAnimation(globals.ctx, hull, S);
                     await sleep(1000 * globals.animationSpeed);
                 }
             }
+            hull.push(sortedS[i]);
         }
 
         const convexHull = new ConvexHull();
-
-        for (const point of sortedS) {
-            convexHull.addPoint(point);
-        }
+        convexHull.points = hull;
 
         return convexHull;
     }
-
 }

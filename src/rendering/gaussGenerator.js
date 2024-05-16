@@ -19,7 +19,7 @@ export function gaussGenerator(S, number, meanX = 895, stdDevX = 400, meanY = 42
       } while (x < 10 || x > 1790)
       do {
         y = meanY + stdDevY * randomGaussian();
-      } while ( y < 80 || y > 920)
+      } while ( y < 80 || y > 950)
 
       S.push({x, y});
   }
