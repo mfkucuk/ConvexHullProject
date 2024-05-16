@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Convex Hull</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="public/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="public/favicon-16x16.png">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        <script type="module" src="src/index.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        
+        <header id="navbar">
+            <nav>
+                <ul>
+                    <li style="margin-right: 0.521vw;"><image src="public/favicon-32x32.png"></image></li>
+                    <li style="margin-right: 1.483vw;"><h1>Convex Hull</h1></li>
+                    <li class="dropdown">
+                        <button class="dropbtn" id="dropbtn">Select Algorithm ▼</button>
+                        <ul class="dropdown-content"> 
+                            <li><a class="dropdownItem" id="graham" href="#">Graham's Scan</a></li>
+                            <li><a class="dropdownItem" id="jarvis" href="#">Jarvis's March</a></li>
+                            <li><a class="dropdownItem" id="quick" href="#">QuickHull</a></li>
+                            <li><a class="dropdownItem" id="merge" href="#">MergeHull</a></li>
+                        </ul>
+                    </li>
+                    <li><button class="runButton" id="runButton">Run Graham's Scan</button></li>
+                    <li><button class="btn2" id="clearButton" href="#">Clear Points</button></li>
+                    <li><button class="btn2" id="resetButton" href="#">Reset Hull</button></li>
+                    <li style="font-weight: bold; text-align: center; margin-right: 0.781vw">Points: <p id="pointCount" >0</p></li>
+                    <li style="font-weight: bold; text-align: center; margin-right: 0.781vw">Points on Hull: <p id="pointCountOnHull">0</p></li>
+                    <li style="font-weight: bold; text-align: center; margin-right: 0.781vw">Instant</li>
+                    <label class="switch">
+                        <input type="checkbox" id="animation">
+                        <span class="slider"></span>\
+                    </label>
+                    <li style="font-weight: bold; text-align: center; margin-left: 0.781vw; margin-right:2.083vw;" >Animated</li>
+                    <div class="zoom-container">
+                        <p style="font-weight: bold; text-align: center;">Animation Speed</p> 
+                        <input type="range" min="0" max="4" value="2" class="zoom-slider" id="zoomSlider">
+                        <div class="zoom-track"></div>
+                        <div class="zoom-marks">
+                          <span class="zoom-mark">0.25x</span>
+                          <span class="zoom-mark">0.5x</span>
+                          <span class="zoom-mark">1x</span>
+                          <span class="zoom-mark">2x</span>
+                          <span class="zoom-mark">4x</span>
+                        </div>
+                    </div>
+                </ul>
+            </nav>
+        </header>
+        <div class="info-container">
+          <div class="info-card">
+            <p>This Convex Hull visualizer was made by Mehmet Feyyaz Küçük and Deniz Çelik.</p>
+          </div>
+            <button class="info-button"><i class="fas fa-info"></i></button>
+        </div>
+        <div class="container">
+            <nav> </nav>
+            <div class="content">
+              <div class="button-container">
+                <h2>Uniform Dist.:</h2>
+                <button class="generate-button" id=1k>1K</button>
+                <button class="generate-button" id="10k">10K</button>
+                <button class="generate-button" id="100k">100K</button>
+                <button class="generate-button" id=1m>1M</button>
+              </div>
+            </div>
+        </div>
+        <div class="container2">
+            <nav> </nav>
+            <div class="content">
+              <div class="button-container">
+                <h2>Gaussian Dist.:</h2>                
+                <button class="generate-button" id=1kg>1K</button>
+                <button class="generate-button" id="10kg">10K</button>
+                <button class="generate-button" id="100kg">100K</button>
+                <button class="generate-button" id=1mg>1M</button>
+              </div>
+            </div>
+          </div>
+        <div class="timer-container">
+          <h2>Timer:</h2>
+          <div id="countdown">
+            <span id="minutes"></span>Minutes 
+            <span id="seconds"></span>Seconds
+          </div>
+        </div>
+        <div id="canvas-container">
+            <canvas id="canvas" width="600" height="600" ></canvas>
+        </div>
+    </body>
+</html>

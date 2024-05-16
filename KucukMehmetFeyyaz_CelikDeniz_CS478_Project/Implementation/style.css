@@ -1,0 +1,485 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 1.042vw;
+}
+  
+h1 {
+    text-align: center;
+}
+  
+#canvas {
+    position: fixed;
+    left: 0;
+    width: 100;
+    z-index: 1; 
+}
+  
+.runButton {
+    padding-top: 2vh; 
+    padding-bottom: 2vh; 
+    padding-left: 1vw; 
+    padding-right: 1vw;
+    width: 10vw; 
+    border-radius: 0.313vw;
+    background-color: #04AA6D;
+    color: white;
+    border: none;
+    margin-right: 2.083vw;
+    font-size: 0.833vw;
+    margin-left: 2.083vw;
+}
+
+.runButton:disabled { 
+    background-color: #939393;
+}
+
+.runButton:disabled:hover {
+    background-color: #939393;
+}
+
+.btn2:disabled { 
+  background-color: #939393;
+}
+
+.btn2:disabled:hover {
+  background-color: #939393;
+}
+
+.runButton:hover {
+    padding-top: 2vh; 
+    padding-bottom: 2vh; 
+    padding-left: 1vw; 
+    padding-right: 1vw; 
+    border-radius: 0.313vw;
+    background-color: #037249;
+    color: white;
+    border: none;
+    font-size: 0.833vw;
+}
+
+#algorithmSelect, #animation {
+    z-index: 0;
+}
+  
+  
+.button {
+    padding: 0.26vw 0.52vw;
+    border: 0.052vw solid #ddd;
+    border-radius: 0.313vw;
+    cursor: pointer;
+}
+
+header {
+    background-color: #f0f0f0; 
+    padding: 1.042vw 1.042vw;
+    display: flex; 
+    justify-content: space-evenly; 
+    align-items: center;  
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4.63vh;
+    z-index: 100;
+}
+  
+h1 {
+    font-size: 1.5em; 
+    margin: 0; 
+}
+  
+nav {
+    display: flex; 
+}
+  
+nav ul {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;  
+    list-style-type: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline-block;
+}
+  
+
+.dropbtn {
+    background-color: darkturquoise;
+    color: white;
+    border-radius: 0.313vw;
+    padding: 0.833vw;
+    font-size: 0.833vw;
+    border: none;
+    width: 10vw;
+
+}
+
+.dropbtn:hover {
+    background-color: rgb(0, 134, 136);
+    color: white;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 0.833vw;
+    font-size: 0.833vw;
+    border: none;
+
+}
+
+.btn2 {
+    background-color: red;
+    color: white;
+    border-radius: 0.313vw;
+    padding: 0.833vw;
+    font-size: 0.833vw;
+    border: none;
+    margin-right: 2.083vw;
+    
+}
+
+.btn2:hover {
+    background-color: #990000;
+    color: white;
+}
+
+nav li.dropdown { 
+    position: relative;
+    display: inline-block;
+}
+  
+nav li.dropdown a { 
+    display: block; 
+}
+  
+nav ul.dropdown-content { 
+    position: absolute;
+    display: none; 
+    align-content: center;
+    background-color: #f1f1f1;
+    box-shadow: 0px 0.417vw 0.833vw 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdownItem {
+    background-color: darkturquoise;
+    padding: 0.521vw;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    color: white;
+    font-size: 0.833vw;
+    width: 10vw;
+
+}
+
+  
+.dropdownItem:hover {
+    background-color: rgb(0, 134, 136);
+    color: white;
+}
+
+.dropdownItem:active {
+    background-color: rgb(0, 134, 136);
+    color: white;
+}
+
+.dropdown.open .dropbtn {
+    background-color: rgb(0, 134, 136); 
+    color: white;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+
+nav li.dropdown:hover ul.dropdown-content { 
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    width: 10vw;
+
+}
+
+nav li.dropdown:hover ul.dropdown-content li {
+    
+    display: block;
+}
+  
+a {
+    text-decoration: none; 
+    color: #333;
+}
+  
+a:hover {
+    color: #000; 
+}
+
+/* The switch container */
+.switch-container {
+    display: flex; /* Arrange elements horizontally */
+    align-items: center; /* Align labels vertically */
+    margin-right: 0.521vw; /* Optional spacing between switches */
+  }
+  
+  /* The switch - the box around the slider */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 3.125vw;
+    height: 1.771vw;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+    border-radius: 1.042vw;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.354vw;
+    width: 1.354vw;
+    left: 0.208vw;
+    bottom: 0.208vw;
+    border-radius: 1.042vw;
+    background-color: white;
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+  }
+  
+  input:checked + .slider {
+    background-color: darkturquoise;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 0.052vw darkturquoise;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(1.354vw);
+  }
+
+
+.zoom-container {
+  position: relative;
+  width: 12vw; /* Adjust width as needed */
+  margin: 0.521vw auto; /* Center the slider horizontally */
+}
+
+.zoom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 0.521vw;
+  background: #ddd;
+  border-radius: 0.26vw;
+  cursor: pointer;
+  outline: none;
+  z-index: 5;
+
+}
+
+.zoom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.042vw;
+  height: 1.042vw;
+  background: #4CAF50;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.zoom-track {
+  position: absolute;
+  top: 85%;
+  left: 0;
+  right: 0;
+  height: 0.104vw;
+  background: #4CAF50;
+  margin-left: 0.208vw;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.zoom-marks {
+  position: absolute;
+  top: 65%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.zoom-mark {
+  color: #999;
+  font-size: 0.781vw;
+}
+
+.info-container {
+    position: fixed;
+    display: inline-block; /* Ensures elements stack horizontally */
+    z-index: 2;
+    bottom: 3%;
+    right: 0%;
+    font-size: 0.833vw;
+    width: 9vw;
+    height: 22vh;
+  }
+  
+  .info-button {
+    border: none;
+    position: fixed;
+    font-size: 0.781vw;
+    padding-top: 0.781vw; 
+    padding-bottom: 0.781vw; 
+    padding-left: 1.042vw; 
+    padding-right: 1.042vw; 
+    border-radius: 50%; /* Creates a circular button */
+    background-color: #ddd; /* Adjust background color as needed */
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out; /* Add hover effect */
+    z-index: 2;
+    font-family: FontAwesome, sans-serif; /* Include Font Awesome font */
+    box-shadow: 0 0.104vw 0.26vw rgba(0, 0, 0, 0.2); 
+    bottom: 3%;
+    right: 1.5%;
+  }
+  
+  .info-button:hover {
+    background-color: #ddd; /* Adjust hover background color */
+    border-width: 0.052vw;
+    z-index: 2;
+  }
+  
+  .info-card {
+    position: absolute;
+    cursor: initial;
+    top: 0%; /* Positions the card below the button initially */
+    left: 55%; /* Centers the card horizontally */
+    transform: translateX(-50%); /* Adjust positioning as needed */
+    padding: 0.52vw;
+    width: 6vw;
+    font-size: 0.833vw;
+    background-color: #ddd;
+    border-radius: 0.26vw;
+    box-shadow: 0 0.104vw 0.26vw rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    opacity: 0; /* Hides the card initially */
+    transition: opacity 0.2s ease-in-out; /* Add hover effect for opacity */
+    z-index: 2;
+  }
+  
+  .info-container:hover .info-card {
+    opacity: 1; /* Reveals the card on hover */
+    cursor: none;
+    z-index: 2;
+  }
+
+  .container {
+    display: inline-flex; /* Allow stacking navbar and content vertically */
+    flex-direction: column; /* Stack elements on top of each other */
+    position: fixed;
+    right: 1.5%;
+    top: 10%;
+    z-index: 5;
+
+  }
+
+  .container2 {
+    display: inline-flex; /* Allow stacking navbar and content vertically */
+    flex-direction: column; /* Stack elements on top of each other */
+    position: fixed;
+    right: 1.5%;
+    top: 40%;
+    z-index: 5;
+
+  }
+  
+  .content {
+    display: flex; /* Allow placing buttons and text side-by-side */
+    justify-content: space-between; /* Align elements horizontally with space between */
+    align-items: flex-start; /* Vertically align content at the top */
+    padding: 1.042vw; /* Add some padding for aesthetics */
+  }
+  
+  h2 {
+    margin: 0; /* Remove default margin for better spacing */
+    font-size: 0.781vw;
+    color: #333;
+    margin-bottom: 0.521vw;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-content: end;
+
+  }
+  
+  .generate-button {
+    margin-left: 70%;
+    border: 0.052vw;
+    padding-top: 0.781vw; 
+    padding-bottom: 0.781vw; 
+    padding-left: 0.417vw; 
+    width: 2.604vw;
+    padding-right: 0.417vw; 
+    border-radius: 50%; /* Creates round buttons */
+    background-color: #ddd;
+    color: #333;
+    box-shadow: 0 0.104vw 0.26vw rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    cursor: pointer;
+    font-size: 0.781vw;
+    margin-bottom: 0.521vw; /* Add spacing between buttons */
+  }
+
+  .timer-container {
+    position: fixed;
+    top: 70%;
+    right: 2%; 
+    text-align: end;
+    width: 8vw;
+    z-index: 15;
+    cursor: none;
+  }
+  
+  #countdown {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.781vw;
+    color: red;
+
+  }
+  
+  #countdown span {
+    padding: 0.26vw;
+    border: 0.052vw solid #ddd;
+    border-radius: 0.26vw;
+    font-size: 0.781vw;
+    color: red;
+  }
